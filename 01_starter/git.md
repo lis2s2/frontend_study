@@ -64,3 +64,11 @@ git pull origin
 설정 파일이나 빌드 산출물, 기타 라이브러리 파일 등 불필요한 파일들은 올리지 않는 것이 좋음
 .gitignore 파일을 만들어서 올리지 않을 폴더나 파일을 명시하면 됨
 그러면 git에서 해당 폴더랑 파일을 무시함
+
+오늘의 과제:
+1) VS Code 단축기 정리한 것 받아가기
+2) 파일 만들거나 파일 내용 수정하면서 commit 5번 해보기
+중간중간에 git status나 git log 사용하기
+
+#geoblo 
+https://github.com/geoblo
