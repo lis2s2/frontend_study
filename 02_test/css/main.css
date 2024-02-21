@@ -2,3 +2,10 @@ div {
   color : red;
   font-size: 100px;
 }
+
+
+.logo {
+  width: 500;
+  height: 500px;
+  background-image: url(/frontend-study-t/02_test-t/images/logo.png);
+}
