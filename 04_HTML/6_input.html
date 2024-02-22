@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
+  <style>
+     .placeholder-hidden:focus::placeholder {
+      color: transparent;
+     }
+  </style>
 </head>
 <body>
 <!-- input(인라인-블록): 데이터를 입력받는 요소 -->
@@ -22,12 +28,95 @@
 
   <!-- 입력할 값의 힌트 -->
   <input type="text" placeholder="이름을 입력하세요!">
+  <!-- Tip! 포커스 시 사라지는 힌트 -->
+  <input type="text" placeholder="이름을 입력하세요!" class="placeholder-hidden">
 
   <!-- 비활성화: 수정 불가, Tab키로 선택(focus) 불가, submit 불가 -->
   <input type="text" value="disabled 테스트" disabled>
 
   <!-- (참고) 읽기 전용: 수정 불가,Tab키로 선택(focus) 가능, submit 가능 -->
   <input type="text" value="redonly 테스트" readonly>
+
+  <hr>
+
+  <!-- 체크 박스 -->
+  <input type="checkbox"> Apple
+  <input type="checkbox"> Banana
+
+  <br>
+
+  <!-- 
+    label 바인딩 조건(둘 중 하나만 만족하면 됨):
+    1. label 요소 내부에 input 요소를 배치하여 바인딩
+    2. for 속성이 input 요소의 id 속성과 같아야 함
+   -->
+  <label>
+    <input type="checkbox"> Apple
+  </label>
+  <label>
+    <input type="checkbox"> Banana
+  </label>
+
+  <br>
+
+  <!-- 또는 -->
+  <input type="checkbox" id="apple">
+  <label for="apple">Apple</label>
+  <input type="checkbox" id="banana">
+  <label for="banana">Banana</label>
+ 
+  <!-- 
+    label 사용 이점(웹 접근성과 관련):
+    1. 스크린 리더 사용자(사용자가 요소에 초점을 맞추면 레이블을 소리내어 읽음)
+    2. 매우 작은 영역(예: 확인란)을 클릭하는 데 어려움이 있는 사용자
+    - 사용자가 요소 내의 텍스트를 클릭하면 <label>입력이 토글되기 때문(히트 영역이 증가함)
+  -->
+
+  <!-- 예제는 편의를 위해 label을 매번 사용하지 않겠지만 실제 개발시 input 요소에 label을 같이 사용해 줄 것! -->
+
+  <br>
+
+  <!-- 값을 미리 체크 -->
+  <label>
+    <input type="checkbox"> Apple
+  </label>
+  <label>
+    <input type="checkbox" checked> Banana
+  </label>
+
+  <hr>
+
+  <!-- 라디오 버튼 -->
+  <!-- type만 썼을 경우 -->
+  <label>
+    <input type="radio"> Apple
+  </label>
+  <label>
+    <input type="radio"> Bamam
+  </label>
+
+  <br>
+  <!-- 그룹화 하면 중복 체크 안됨  -->
+  <!-- name 속성으로 그룹화 --> 
+  <label>
+    <input type="radio" name="fruit" checked> Apple
+  </label>
+  <label>
+    <input type="radio" name="fruit"> Bamam
+  </label>
+
+  <br>
+
+  <!-- name이 다른 경우 그룹화 안됨 -->
+  <label>
+    <input type="radio" name="fruit1"> Apple
+  </label>
+  <label>
+    <input type="radio" name="fruit2"> Bamam
+  </label>
+
+  <br>
+
 
 </body>
 </html>
