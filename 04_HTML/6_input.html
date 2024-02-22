@@ -96,6 +96,7 @@
   </label>
 
   <br>
+
   <!-- 그룹화 하면 중복 체크 안됨  -->
   <!-- name 속성으로 그룹화 --> 
   <label>
@@ -115,8 +116,71 @@
     <input type="radio" name="fruit2"> Bamam
   </label>
 
+  <hr>
+
+  <!-- 그 밖에 다른 입력 양식들 -->
+
+  <!-- 버튼 -->
+  <input type="button" value="닫기">
+  
+  <button type="button">닫기</button>
+  <!-- botton 태그의 장점 
+    요소 내부에 텍스트 뿐만 아니라 다른 태그를 넣을 수 있음 -->
+  <button type="button"> 
+    <b>닫기</b><br>
+    테스트
+  </button>
+
+  <!-- type 속성을 항상 지정하여 브라우저에 버튼 유형을 알려주는 게 좋음
+    (브라우저마다 또는 사용 위치에 따라 다른 기본값을 가질 수도 있음) -->
+
+  <hr>
+
+  <!-- 색상 선택도구(Color Picker) -->
+  <label for="favcolor">좋아하는 색상 선택:</label>
+  <input type="color" id="favcolor" value="#ff0000">
+
+  <hr>
+
+  <!-- 날짜 -->
+  <label for="birthday">생일</label>
+  <input type="date" id="birthday">
+  <!-- 날짜 + 시간 -->
+  <label for="birthdaytime">생일(날짜 + 시간):</label>
+  <input type="datetime-local" id="birthdaytime">
+  <!-- 시간 -->
+  <label for="time">시간 선택:</label>
+  <input type="time" id="time">
+
+  <hr>
+
+  <!-- 이메일: submit 시 자동으로 이메일 형식 유효성 검사를 해줌 -->
+  <form action="/signup">
+    <label for="email">이메일:</label>
+    <input type="email" id="email">
+    <button type="submit">가입</button>
+  </form>
+
+  <hr>
+
+  <!-- 파일 선택(첨부) -->
+  <label for="myfile">파일 선택:</label>
+  <input type="file" id="myfile">
   <br>
+  <label for="myfile">여러 파일 선택:</label>
+  <input type="file" id="myfile" multiple>
 
+  <hr>
 
+  <!-- 범위 선택 -->
+  <label for="volume">음량(0~10):</label>
+  <input type="range" id="volume" min="0" max="10">
+  
+  <hr>
+
+  <!-- 비밀번호 -->
+  <label for="pwd">비밀번호:</label>
+  <input type="password" id="pwd">
+  
 </body>
 </html>
