@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 복합 선택자: 기본 선택자를 조합해서 사용하는 선택자 */
+    /* 1. 일치 선택자: 동시에 만족하는 요소를 선택 */
+    span.orange {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <ul>
+      <li>사과</li>
+      <li>딸기</li>
+      <li id="orange" class="orange">오렌지</li>
+    </ul>
+    <ul>
+      <li>당근</li>
+      <li>토마토</li>
+      <span class="orange">오렌지</>
+    </ul>
+  </div>
+</body>
+</html>
