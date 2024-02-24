@@ -5,6 +5,38 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
+  <style>
+    h1 img {
+      border: 2px solid red;
+    }
+
+    header ul.main-menu {
+      border: 2px solid green;
+    }
+
+    #global_aside *:nth-child(5) > img {
+      border: 2px solid blue;
+    }
+    /* #global_aside > :nth-child(5) > img */
+
+    .column-1 > li.header {
+      border: 2px solid orange;
+    }
+
+    #detail_list *:nth-child(4) *:nth-child(3) {
+      border: 2px solid olive;
+    }
+    /* #detail_list > :nth-child(4) > :nth-child(3) */
+
+    h3:hover {
+      color: skyblue;
+    }
+
+    [type="text"]:nth-child(2n-1):focus {
+      background-color: orange;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -59,15 +91,11 @@
     </ul>
     <h3>주제2</h3>
     <ul>
-      <li class="header">
-        <p>게임용 노트북</p>
-      </li>
+      <li class="header"><p>게임용 노트북</p></li>
       <li>아이온 게임용 노트북</li>
       <li>디아블로 게임용 노트북</li>
       <li>블소 게임용 노트북</li>
-      <li class="header">
-        <p>울트라북</p>
-      </li>
+      <li class="header"><p>울트라북</p></li>
       <li>헬로키티 울트라북</li>
       <li>리락쿠마 울트라북 초특가</li>
       <li>카피바라 울트라북</li>
