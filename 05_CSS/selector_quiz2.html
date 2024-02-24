@@ -14,11 +14,16 @@
     header ul.main-menu {
       border: 2px solid green;
     }
-
-    #global_aside *:nth-child(5) > img {
+  
+    #global_aside :nth-child(5) img {
       border: 2px solid blue;
     }
-    /* #global_aside > :nth-child(5) > img */
+    /* #global_aside *:nth-child(5) > img {
+      border: 2px solid blue;
+    } */
+    /* #global_aside > :nth-child(5) > img {
+      border: 2px solid blue;
+    }*/
 
     .column-1 > li.header {
       border: 2px solid orange;
@@ -27,9 +32,11 @@
     #detail_list *:nth-child(4) *:nth-child(3) {
       border: 2px solid olive;
     }
-    /* #detail_list > :nth-child(4) > :nth-child(3) */
+    /* #detail_list > :nth-child(4) > :nth-child(3) {
+      border: 2px solid olive;
+    }*/
 
-    h3:hover {
+    #detail_list > :last-child:hover {
       color: skyblue;
     }
 
