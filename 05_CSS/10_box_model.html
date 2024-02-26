@@ -76,6 +76,43 @@
       /* Tip! "가로 길이를 갖는" 블록 요소의 수평 가운데 정렬 */
       margin: 0 auto;
     }
+
+    .container-2 .item:last-child {
+      /* 내부 여백 지정 시 요소의 크기가 커짐 */
+      /* 즉, width, height는 콘텐츠의 크기를 의미함 */
+      /* padding: 10px; */
+      /* padding: 10px 20px; */
+      /* padding: 10px 20px 30px; */
+      /* padding: 10px 20px 30px 40px; */
+      padding-left: 20px;
+    }
+
+    .container-3 .item {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+    .container-3 .item:first-child {
+      /* 실선 */
+      border: 10px solid;
+      /* padding과 같이 요소의 크기가 커짐 */
+      color: blue;
+      /* 지정된 색상 값이 없으면 요소의 글꼴 색상이 적용(보통 명확하게 지정해서 씀) */
+      border: 10px solid gray;
+    }
+    .container-3 .item:nth-child(2) {
+      /* 파선 */
+      /* border: 10px dashed red; */
+      border: 10px dashed #ff0000;
+    } 
+    .container-3 .item:nth-child(3) {
+      /* 점선 */
+      /* border: 10px dotted blue; */
+      /* border: 10px dotted #0000ff; */
+      /* border: 10px dotted rgb(0, 0, 255); */
+      border: 10px dotted rgba(0, 0, 255, 0.5); 
+    } 
+    
   </style>
 </head>
 <body>
@@ -117,6 +154,13 @@
 
   <h4>2. margin, padding 실습</h4>
   <div class="container-2">
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+
+  <h4>3. border 실습</h4>
+  <div class="container-3">
+    <div class="item"></div>
     <div class="item"></div>
     <div class="item"></div>
   </div>
