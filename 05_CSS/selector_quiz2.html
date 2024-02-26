@@ -5,15 +5,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="selector_answer.css">
 
   <style>
     h1 img {
       border: 2px solid red;
     }
+    /* => header.logo img {border: 2px solid red;} 좀 더 구체적이게 */
 
     header ul.main-menu {
       border: 2px solid green;
     }
+    /* => header .main-menu {border: 2px solid green;} ul 생략 가능 */
   
     #global_aside :nth-child(5) img {
       border: 2px solid blue;
@@ -24,10 +27,12 @@
     /* #global_aside > :nth-child(5) > img {
       border: 2px solid blue;
     }*/
+    /* => #global_aside > a:nth-child(5) > img {border: 2px solid blue;} */
 
     .column-1 > li.header {
-      border: 2px solid orange;
+      border: 2px solid darkorange;
     }
+    /* => #detail_list > .column-1 > .header {border: 2px solid darkorange;} */
 
     #detail_list *:nth-child(4) *:nth-child(3) {
       border: 2px solid olive;
@@ -35,14 +40,20 @@
     /* #detail_list > :nth-child(4) > :nth-child(3) {
       border: 2px solid olive;
     }*/
+    /* => #detail_list > ul:nth-child(4) > li:nth-child(3) {border: 2px solid olive;} */
 
     #detail_list > :last-child:hover {
-      color: skyblue;
+      border: 2px solid lightskyblue;
     }
+    /* #detail_list *:last-child:hover {
+      border: 2px solid red;
+    } > 부호 쓰지 않는 방법 없나? */
+    /* => #detail_list > h3:last-child:hover {border: 2px solid lightskyblue;} */
 
     [type="text"]:nth-child(2n-1):focus {
       background-color: orange;
     }
+    /* => input[type="text"]:focus:not(input[readonly]) {outline: none; border: 2px solid red;} focus시 outline이 생김 */
   </style>
 </head>
 <body>
