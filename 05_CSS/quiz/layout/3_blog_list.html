@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 공통 스타일은 앞부분에 작성 */
+    ul { 
+      list-style: none;
+      display: flex;
+    }
+    a {
+      text-decoration: none;
+      color: #000;
+      background-color: lightgray;
+      padding: 10px;
+      margin-right: 10px;
+      /* column gap: 10px; */
+      border-radius: 5px;
+      font-size: 20px;
+    }
+    
+    .container {
+      display: flex;
+      width: 800px;
+      /* position: relative; */
+      margin: 0 auto;
+    }
+    .blog-content {
+      background-color: white;
+      width: 80%;
+      height: 200px;
+      /* position: relative;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto; */
+      display: flex;
+      /* flex-grow: 2; */
+      /* justify-content: center;
+      align-items: center; */
+      
+    }
+    .blog-img {
+      background-color: gray;
+      width: 20%;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content-header {
+      display: flex;
+    }
+
+  
+</style>
+</head>
+<body>
+  <!-- Tip! 레이아웃을 만드는 기본 
+    뭘 만들든 레이아웃은 항상 수평(행)으로 자른 후 박스 만들고 시작하면 됨
+    그리고 이 박스들을 전부 <div>로 구현해 놓으면 됨(물론 시맨틱 태그도 최대한 활용)
+    그리고 안에 글 넣고 그림 넣고 하면 끝!
+
+    이 때 <div>는 블록 요소이기 때문에 위아래로 배치
+      좌우로 나란히 배치하고 싶으면 float(😠), inline-block(😐), Flexbox(😀)
+  -->
+
+  <!-- navber -->
+  <nav>
+    <ul class="navber">
+      <li><a href="#">집에</a></li>
+      <li><a href="#">가는</a></li>
+      <li><a href="#">방법</a></li>
+      <li><a href="#">찾기</a></li>
+    </ul>
+  </nav>
+  <!-- blog list -->
+  <div class="container" >
+    <div class="blog-content">
+      <div class="content-header">
+      <!-- 프로필 이미지 -->
+      <div class="myname" style="font-weight: bold; ">이수현</div>
+      <!-- 작성자, 시간 -->
+      </div>
+      <div class="content-body">
+      <!-- 글 제목, 글 내용 -->
+      <h4 style="font-size: 18px;">오늘의 점심 메뉴는?!</h4>
+      <p>중국집 가서 오징어 덮밥 먹었어요. 
+        <br>식곤증 때문에 졸려요.
+        <br>쉬는 시간에 잘거에요.
+      </p>
+      </div>
+    </div>
+    <div class="blog-img">
+      <!-- 샘플 이미지 -->
+    </div>
+  </div>
+</body>
+</html>
+
+나는 실패함
