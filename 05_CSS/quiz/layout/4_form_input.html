@@ -83,6 +83,10 @@
       border-radius: 5px;
       outline: none;
     } */
+    .name {
+      display: flex;
+      justify-content: space-around;
+    }
     
     .button {
       padding: 5px 30px;
@@ -93,10 +97,10 @@
     }
 
     .click {
-      /* display: flex;
-      flex-direction: column;
-      justify-content: space-between; */
-      list-style: none;
+      display: flex;
+      /* flex-direction: column; */
+      justify-content: space-between;
+      
     }
 
   </style>
@@ -120,7 +124,7 @@
     <input type="text" id="name" class="text-input">
   </form>
 
-  <div>
+
   <h2>실전</h2>
   <!-- 박스부터 그려보기!! (불필요한 div는 생략 가능) -->
   <div class="form-background">
@@ -156,35 +160,35 @@
           <input type="text" class="form-input" id="l-name">
         </p> -->
         
-        <!-- <div class="name">
-        <p class="name-1">
-          <label for="name">First Name</label>                
-        </p>
-          <input type="text" id="f-name" class="form-input">                      
-        </div>
-
         <div class="name">
-        <p class="name-2">
-          <label for="name">Last Name</label>
-        </p>
-          <input type="text" id="l-name" class="form-input">
-        </div> -->
-        
+          <div style="margin-right: 20px;">
+            <p class="name-1">
+              <label for="name">First Name</label>                
+            </p>
+            <input type="text" id="f-name" class="form-input">                      
+          </div>
+          <div>
+            <p class="name-2">
+              <label for="name">Last Name</label>
+            </p>
+            <input type="text" id="l-name" class="form-input">
+          </div>
+        </div>        
 
         <p>
           <label for="msg">Message</label>
         </p>
-        <textarea type="text" style="height: 70px;" id="msg" class="form-input"></textarea>
+        <textarea style="height: 70px;" id="msg" class="form-input"></textarea>
 
-              
-        <p class="click">
-          <div><input type="checkbox" id="agree">Agree</div>
+      
+        <div class="click">
+          <div style="width: 50%;"><input type="checkbox" id="agree">Agree</div>
           <button class="button">SEND</button>
-        </p>
-        
+        </div>
+      
     
 
-        
+      
       </form> 
     </div>
   </div>
