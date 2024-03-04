@@ -54,9 +54,9 @@
     }
     form {
       margin: 40px;
-      display: block;
-      
+      display: block;     
     }
+
     .form-input {
       width: 100%;
       max-width: 600px;
@@ -65,8 +65,8 @@
       border: 2px solid #ccc;
       border-radius: 5px;
       outline: none;
+      /* outline: none;이 있어야 밑에 border가 깔리지 않고 나타남 */
       transition: 2s linear ;
-
     }
     .form-input:focus {
       /* transition: height 1s linear 3s; */
@@ -74,10 +74,6 @@
       border: 2px solid rgb(162, 162, 162);
       /* background-color: aqua; */
     }
-    /* #email:focus {
-      transition: 2s linear ;
-      border: 2px solid rgb(162, 162, 162);
-    } */
 
     .name {
       display: flex;
@@ -88,14 +84,16 @@
       padding: 5px 30px;
       background-color: lightsalmon;
       border-radius: 5px;
-      border: 2px solid salmon;
       color: white;
+      border: none;
     }
+    /* .button:hover {     
+      border: 2px solid salmon;
+    } */
 
     .click {
       display: flex;
-      justify-content: space-between;
-      
+      justify-content: space-between;      
     }
 
   </style>
@@ -130,23 +128,6 @@
           <label for="email">Your Email</label>
         </p>
         <input type="text" placeholder="email@example.com" id="email" class="form-input">
-        
-        <!-- <p>
-          <label for="f-name" style="margin-right: 35%;">First name</label>
-          <label for="l-name">Last name</label>
-        </p>
-        <p style="display: flex;">
-          <input type="text" class="form-input" style="margin-right: 20px;">
-          <input type="text" class="form-input">
-        </p> -->
-
-        <!-- <p>                  
-          <label for="f-name">First name</label>
-          <input type="text" class="form-input" id="f-name">
-          
-          <label for="l-name">Last name</label>
-          <input type="text" class="form-input" id="l-name">
-        </p> -->
         
         <div class="name">
           <div style="margin-right: 20px;">
