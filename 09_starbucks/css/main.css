@@ -980,7 +980,7 @@ footer .logo {
   align-items: center;
   position: fixed;
   bottom: 30px;
-  right: 30px;
+  right: 50px;
   z-index: 9;
   opacity: 0; /* 처음 상태는 투명 */
 }
