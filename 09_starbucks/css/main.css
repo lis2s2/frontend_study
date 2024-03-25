@@ -472,8 +472,6 @@ header .badges .badge {
 }
 .promotion .swiper-slide {
   /* 모든 슬라이드는 반투명하게, active 한 것만 불투명하게 */
-  opacity: 0.5;
-  transition: opacity 1s;
 }
 .promotion .swiper-slide-active {
   opacity: 1;
@@ -982,7 +980,7 @@ footer .logo {
   bottom: 30px;
   right: 50px;
   z-index: 9;
-  opacity: 0; /* 처음 상태는 투명 */
+  opacity: 0 ; /* 처음 상태는 투명 */
 }
 
 /* 반응형 실습 */
