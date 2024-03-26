@@ -186,9 +186,19 @@
 
     // (응용) 기본값 설정 시 사용
     // falsy(false로 취급되는 값): false, '', 0, null, undefined, NaN
-    const dbData = null;
+    // const dbData = null;
+    const dbData = '';
     result = dbData || '기본값';
     document.write(result, '<br>');
+
+    // (참고) null 병합 연산자(ES2020)
+    // nullish(null 계열의 값): null, undefined
+    // const inputName = 'sh';
+    const inputName = null;
+    // const inputName = '';
+    const nickName = inputName ?? 'Guest'
+    document.write(nickName, '<br>');
+
 
     // (심화 퀴즈)
     let aa; 
@@ -200,6 +210,30 @@
     // ff에 저장된 값은? 
     document.write(ff, '<br>');
 
+    // 7. 조건(삼항) 연산자
+    // 조건에 따라 2개의 값 중 하나를 반환
+    // 조건식 ? 값1 : 값2;
+    document.write('<h2>삼항 연산자</h2>');
+    result = true ? 'javascript' : 'hello';
+    // result = false ? 'javascript' : 'hello';
+    document.write(result, '<br>');
+
+    const score = 95; 
+    // result = score >= 90 ? 'A' : 'B';
+    result = score >= 90 ? 'A' : (score >= 80 ? 'B' : 'C');
+    document.write(result, '<br>');
+
+    // 홀짝 판별기
+    // window.prompt('메세지', '기본값'): 입력을 요청하는 대화 상자
+    // 확인을 누르면 입력값이, 취소를 누르면 null을 반환
+    // const number = prompt('숫자를 입력하세요.', '0');
+    const number = Number(prompt('숫자를 입력하세요.', '0')); // 문자를 넘버로 바꿀 때
+    document.write(number, ' ', typeof number, '<br>');
+
+    // (참고) % 연산 시 문자가 숫자로 자동 타입 변환이 일어남
+    result = number % 2 === 0 ? '짝수' : '홀수';
+    document.write(result, '<br>');
+    
 
 
   </script>
