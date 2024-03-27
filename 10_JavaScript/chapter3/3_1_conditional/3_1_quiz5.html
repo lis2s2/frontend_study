@@ -48,39 +48,44 @@
     let max=0;
     if(num1 > num2) {
       if(num1 > num3) {
-        max=num1;
+        max = num1;
+        if (num2 > num3) {
+          min = num3;
+          document.write("최대값 " + max + ' ' + "최소값 " + min);
+        } else {
+          min = num2;
+          document.write("최대값 " + max + ' ' + "최소값 " + min);
+        }
       }
       else {
-        max=num3;
+        max = num3;
+        min = num2;
+        document.write("최대값 " + max + ' ' + "최소값 " + min);
       }
     }
-    else {
+    else if (num2 > num1){
       if(num2 > num3) {
-        max=num2;
+        max = num2;
+        if (num1 > num3) {
+          min = num3;
+          document.write("최대값 " + max + ' ' + "최소값 " + min);
+        } else {
+          min = num2;
+          document.write("최대값 " + max + ' ' + "최소값 " + min);
+        }
       }
       else {
-        max=num3;
-      }
-      document.write("최대값 " + max);
-    }
-    let min=0;
-    if(num1 < num2) {
-      if(num1 < num3) {
-        max=num1;
-      }
-      else {
-        max=num3;
+        max = num3;
+        if (num1 > num2) {
+          min = num2;
+          document.write("최대값 " + max + ' ' + "최소값 " + min);
+        } else {
+          min = num1;
+          document.write("최대값 " + max + ' ' + "최소값 " + min);
+        }
       }
     }
-    else {
-      if(num2 < num3) {
-        max=num2;
-      }
-      else {
-        max=num3;
-      }
-      document.write("최소값 " + min);
-    }
+    // document.write를 한번만 쓸 수는 없을까?
   </script>
 </head>
 <body>
