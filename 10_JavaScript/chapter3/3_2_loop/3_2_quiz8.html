@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 문제8
+    // 이중 for문을 이용해 
+    // 아래와 같이 출력하세요.
+    // *
+    // **
+    // ***
+    // ****
+    // *****
+    
+    for (let index = 0; index < 5; index++) {
+      for (let j = 0; j <= index; j++) {
+        document.write('*');
+      }
+      document.write('<br>');
+    }
+
+    // 풀이8
+
+//for (int i = 5; i >=1; i--) {
+// for (int j = 1; j <=i; j++)
+//i가 5이면 j는 5(5,1)&(5,2)&(5,3)&(5,4)&(5,5) --별이 다섯번
+//i가 4이면 j는 5(4,1)&(4,2)&(4,3)&(4,4) --별이 네번
+//i가 3이면 j는 5(3,1)&(3,2)&(3,3) --별이 세번
+// for (int i = 0; i <5; i++) {
+// for (int j = 4; j >=i; j--) {
+// System.out.print("*");
+// }
+// System.out.println();
+// }
+// ​
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
