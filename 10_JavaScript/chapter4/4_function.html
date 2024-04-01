@@ -23,7 +23,7 @@
       <button type="button" onclick="gallery(nex)" class="nex_btn">다음</button>
     </p>
     <p>
-      <img src="images/pic_1.jpg" alt="photo" srcset="photo" class="img">
+      <img src="images/pic_1.jpg" alt="photo" class="img">
     </p>
   </div>
 
@@ -172,7 +172,7 @@
     }
 
     document.write(`평균 점수는 ${testAvg(subjects)}점 입니다.`)
-    testAvg(subject);
+    testAvg(subjects);
 
 
     // 퀴즈: 이전/다음 버튼으로 이미지 넘기기
@@ -180,6 +180,7 @@
     // 힌트: img 태그를 선택 후 seAttribute를 이용하여 src속성 변경
 
     const preBtn = document.querySelector('.pre_btn')
+    const nexBtn = document.querySelector('.nex_btn')
     function gallery() {
       
     }
