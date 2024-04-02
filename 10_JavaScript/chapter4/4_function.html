@@ -19,8 +19,8 @@
   <!-- *** -->
   <div>
     <p>
-      <button type="button" onclick="gallery(0)">이전</button>
-      <button type="button" onclick="gallery(1)">다음</button>
+      <button type="button" onclick="gallery('pre')">이전</button>
+      <button type="button" onclick="gallery('nex')">다음</button>
     </p>
     <p>
       <img src="./images/pic_1.jpg" alt="photo" class="photo">
@@ -179,29 +179,41 @@
     // 위에 body태그 참조***
     // 힌트: img 태그를 선택 후 seAttribute를 이용하여 src속성 변경
 
-    // const preBtn = document.querySelector('.pre_btn');
-    // const nexBtn = document.querySelector('.nex_btn');
-    const imgEl = document.querySelector('.photo');
+    
+    let i = 1; 
+    function gallery(direction) { // 매개변수
+      if (direction === 'nex') {
+        if (i >= 8) return; // 함수 종료
+        i++;
+      } else if (direction === 'pre') {
+        if (i <= 1) return; // 함수 종료
+        i--;
+      }
+      const imgEl = document.querySelector('.photo');
+      imgEl.setAttribute('src', `images/pic_${i}.jpg`);
+    }
 
-    // nexBtn.addEventListener('click', function gallery(nex) {
-    //   imgEl = document.getElementById('img'); 
-    //   nexImg.src = 'images/pic_2.jpg';
-    // })
+    
+  // function gallery(nex) {
+  //   if (nex === 'nex') {
+  //     if (i < 8) {
+  //       i++;
+  //     }  imgEl.setAttribute('src', `images/pic_${i}.jpg`);
+  //   } 
 
-    // btn.addEventListener('click', function gallery(pre){
-    //     for (let i = 9; i > 0; i--) {
-    //       imgEl.setAttribute('src', 'images/pic_' + i + '.jpg');
-    //     } 
-    //   }
-    // )
-
-    // let i = 1;
     // function gallery(nex) {
     //   for (let i = 1; i < 9; i++) {
     //     imgEl.setAttribute('src', `images/pic_${i}.jpg`);
     //   }
     // }
       
+      // else if (pre === 'pre') {
+      //   if (i > 0) {
+      //     i--;
+      //   }
+      // }  imgEl.setAttribute('src', `images/pic_${i}.jpg`);
+    // }
+
     // document.querySelector('.nex_btn').addEventListener('click', function gallery(nex) {
     //   if (nex) {
     //     if (i = 8) return; 
@@ -218,44 +230,28 @@
     // });
     
     // function gallery(nex) {
-      //   for (i = 1; i <= 8; i++) {
-        //       imgEl.setAttribute('src', './images/pic_' + i + '.jpg')
-        //     }
-        // function gallery(pre) {
-          //   for (let i = 8; i >= 1; i--) {
-            //     imgEl.setAttribute('src', `./images/pic_${i}.jpg`)
-            //   }
-            // }
-            
-    let i = 1;
-    
-    function gallery() {
-      i++;
-      if (i <= 8) {
-        imgEl.setAttribute('src', `./images/pic_${i}.jpg`)
-      }
-      else { 
-        i--;
-        imgEl.setAttribute('src', `./images/pic_${i}.jpg`)
-        }
-      }
-    
-    //   i = 8;
-    //   function gallery(pre) {
-    //     i--;
-    //   if (i >= 1)
-    //     imgEl.setAttribute('sre', `./images/pic_${i}.jpg`);
-    //   }
+    //     for (i = 1; i <= 8; i++) {
+    //       imgEl.setAttribute('src', `./images/pic_${i}.jpg`)
+    //     }
+    // f1unction gallery(pre) {  
+    //     for (let i = 8; i >= 1; i--) {
+    //       imgEl.setAttribute('src', `./images/pic_${i}.jpg`)
+    //     }
     // }
+            
+    // let i = 1;
     
-    
-    // function gallery(pre) {
-    //   i -= 1;
-    //   if (i >= 1) {
+    // function gallery(nex) {
+    //   i++;
+    //   if (i <= 8) {
     //     imgEl.setAttribute('src', `./images/pic_${i}.jpg`)
     //   }
-    // }
-    // }
+    //   else { 
+    //     i--;
+    //     imgEl.setAttribute('src', `./images/pic_${i}.jpg`)
+    //     }
+      // }
+    
 
   </script>
 </body>
