@@ -21,37 +21,37 @@
     const num1 = Number(prompt('숫자1 입력'));
     const operator = prompt('사칙연산(+, -, *, /) 중 하나 입력');
     const num2 = Number(prompt('숫자2 입력'));
-
+    
+    function add(num1, num2) {
+      return num1 + num2;
+    }
+    function minus(num1, num2) {
+      return num1 - num2;
+    }
+    function multiple(num1, num2) {
+      return num1 * num2;
+    }
+    function devide(num1, num2) {
+      return num1 / num2;
+    }
+    
     function calculator(num1, num2, operator) {
       switch (operator) {
         case '+':
-          return num1 + num2;
+          return add(num1, num2);
           break;
         case '-':
-          return num1 - num2;
+          return minus(num1, num2);
           break;
         case '*':
-          return num1 * num2;
+          return multiple(num1, num2);
           break;
         case '/':
-          return num1 / num2;
+          return devide(num1, num2);
           break;
       }
     };
     document.write('연산 결과: ' + calculator(num1, num2, operator));
-
-    // function add(num1, num2) {
-    //     return num1 + num2;
-    //   }
-    // function minus(num1, num2) {
-    //     return num1 - num2;
-    //   }
-    // function multiple(num1, num2) {
-    //     return num1 * num2;
-    //   }
-    // function devide(num1, num2) {
-    //     return num1 / num2;
-    //   }
 
     // function calculator(operator) {
     //   switch (operator) {
