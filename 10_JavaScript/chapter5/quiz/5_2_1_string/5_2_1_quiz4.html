@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-  <input type="file" id="fileInput" accept="image/*">
+  <input type="file" id="fileInput" accept="image/*" onchange="handleFile(this.files)">
   <!-- <input type="file" multiple> -->
 
   <script>
@@ -19,27 +19,49 @@
     // (아래 샘플 코드의 주석을 해제하고 이어서 풀면 됩니다.)
 
     // 샘플 코드
-    const imgFileExt = ['jpg', 'png', 'gif'];
-    const fileInput = document.querySelector('input[type="file"]');
-
-    // str = 'Apple, Banana, kiwi';
-    // let res = str.slice(7,13);
-    // document.write(res, '<br>');
+    // const imgFileExt = ['jpg', 'png', 'gif'];
+    // const fileInput = document.querySelector('input[type="file"]');
 
     // 첨부된 파일에 변화가 감지되었을때 'change' 이벤트 발생
-    fileInput.addEventListener('change', function () {
-      // debugger;
-      console.log(fileInput); // file input DOM 객체
-      console.log(fileInput.files); // FileList 객체
-      console.log(fileInput.files[0]); // File 객체
+    // fileInput.addEventListener('change', function () {
+    //   // debugger;
+    //   console.log(fileInput); // file input DOM 객체
+    //   console.log(fileInput.files); // FileList 객체
+    //   console.log(fileInput.files[0]); // File 객체
 
      // 풀이4
 
-      
-      
+    function handleFile(files) {
+          const file = files[0];
+          if (file) {
+              const fileName = file.name;
+              const fileExt = getFileExtension(fileName);
+              if (isImageFile(fileExt)) {
+                  alert("이미지 파일입니다.");
+              } else {
+                  alert("이미지 파일이 아닙니다.");
+              }
+          } else {
+              console.log("No file selected.");
+          }
+      }
+
+      function getFileExtension(fileName) {
+          const lastIndex = fileName.lastIndexOf(".");
+          if (lastIndex === -1 || lastIndex === 0) {
+              return "";
+          }
+          return fileName.slice(lastIndex + 1).toLowerCase();
+      }
+
+      function isImageFile(fileExt) {
+          const imageExtensions = ["jpg", "jpeg", "png", "gif"];
+          return imageExtensions.includes(fileExt);
+      }
+    
 
 
-    });
+    // });
   </script>
 </body>
 </html>
