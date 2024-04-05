@@ -15,7 +15,7 @@
     const ssn = prompt('주민등록번호를 입력하세요.');
 
     // 풀이1
-
+    
     const maskSsn = ssn.charAt(7);
     console.log(maskSsn);
     if (maskSsn === '1' || maskSsn === '3') {
@@ -23,6 +23,22 @@
     } else if (maskSsn === '2' || maskSsn === '4') {
       alert('여자입니다.');
     }
+
+    // const gender = ssn[6];
+    // const gender = ssn.slice(7, 8);
+    // let msg = '존재하지 않는 성별입니다.';
+
+    // switch (gender) {
+    //   case '1':
+    //   case '3':
+    //     msg = '남자입니다.';
+    //     break;
+    //   case '2':
+    //   case '4':
+    //     mes = '여자입니다.';
+    //     break;
+    // }
+    document.write(msg);
     
   </script>
 </head>
