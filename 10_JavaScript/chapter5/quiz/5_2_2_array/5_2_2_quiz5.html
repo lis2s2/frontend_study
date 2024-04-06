@@ -12,12 +12,27 @@
     // 배열의 맨 첫번째 값과 맨 끝값을 꺼내와 출력해보세요.
     // (예: 입력한 길이가 5이면 arr 배열에 프롬프트로 입력받은 5개의 데이터 추가)
 
-    const arrLength = Number(prompt('생성할 배열의 길이를 입력하세요.', 2));
-    const arr = [];
+    const arrLength = Number(prompt('생성할 배열의 길이를 입력하세요.'));
+    // console.log(arrLength);
+    
+    const arr = []; // 빈 배열 생성
+    // console.log(arr);
 
-    // 풀이5
-    
-    
+    for (let index = 0; index < arrLength; index++) {
+      let arrRepeat = prompt('데이터 입력'); // 반복해서 데이터 입력
+      console.log(arrRepeat); // 입력된 데이터 출력
+      arr.push(arrRepeat); // 입력된 데이터 배열에 추가
+    }
+    console.log(arr); // 배열 출력
+
+    // 첫번째 값
+    let firstarr = arr.slice(0, 1);
+    document.write(firstarr, '<br>');
+
+    // 끝 값
+    let lastarr = arr.slice(arrLength-1, arrLength);
+    document.write(lastarr);
+
   </script>
 </head>
 <body>
