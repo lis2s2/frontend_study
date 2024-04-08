@@ -16,17 +16,24 @@
     
     // 풀이6
     
-    // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
-    // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
-    // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
-    // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
-    // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
-    // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
-    // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
-    // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
-    // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
-    // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
-    // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
+    // Random random = new Random();
+    // for (int i = 1; i < 7; i++) {
+    // int lotto = (int) (Math.random() *45) + 1;  //아나ㅣ 왜 int 로또 하면 안되느거임 개짜증
+    // System.out.println("로또번호는" + i +':' + lotto);
+
+    function getRandomInteger(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    
+    for (let index = 1; index < 7; index++) {
+      // document.write(getRandomInteger(1, 45), '<br>');
+      document.write(getRandomInteger(1, 45), '<br>');
+    }
+
+
+
+
   </script>
 </head>
 <body>
