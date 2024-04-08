@@ -16,21 +16,28 @@
     // 아래와 같이 복사하면..?
     // const copyArr = originArr;
     // copyArr.push(99);
-    // console.log(originArr);
+    // console.log(originArr); // 원본도 변경
     // 배열은 객체이기 때문에 copyArr와 originArr는 모두 같은 배열을 참조합니다.
     // 즉, 원본도 같이 변경됨
 
     // 풀이1
     
-    const arr = originArr.slice(0)
+    const arr = originArr.slice(0) // 새로운 배열을 만들었기 때문에 원본 변경X
     document.write(arr, '<br>');
+
+    // (참고) ES6차 spread 연산자
+    const copyArr5 = [...originArr];
+    document.write(copyArr5, '<br>');
 
     const arr1 = [1];
     const arr2 = [2];
     const arr3 = [4];
     const arr4 = [0];
     const arrarry = arr1.concat(arr2, arr3, arr4);
-    document.write(arrarry);
+    document.write(arrarry, '<br>');
+
+    const copyArr4 = [].concat(originArr);
+    document.write(copyArr4);
     
   </script>
 </head>

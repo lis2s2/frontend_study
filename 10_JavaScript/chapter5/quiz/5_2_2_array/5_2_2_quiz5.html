@@ -20,8 +20,9 @@
 
     for (let index = 0; index < arrLength; index++) {
       let arrRepeat = prompt('데이터 입력'); // 반복해서 데이터 입력
-      console.log(arrRepeat); // 입력된 데이터 출력
+      console.log(arrRepeat); // 입력된 데이터 확인
       arr.push(arrRepeat); // 입력된 데이터 배열에 추가
+      // arr[i] = prompt('데이터 입력');
     }
     console.log(arr); // 배열 출력
 
@@ -32,6 +33,11 @@
     // 끝 값
     let lastarr = arr.slice(arrLength-1, arrLength);
     document.write(lastarr);
+
+    // if (arr.length > 0) {
+    //   document.write(arr.shift(), '<br>') 
+    //   document.write(arr.pop(), '<br>') 
+    // }
 
   </script>
 </head>

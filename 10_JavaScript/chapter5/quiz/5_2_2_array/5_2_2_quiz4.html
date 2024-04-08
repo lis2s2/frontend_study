@@ -16,8 +16,23 @@
     points.sort(function (a, b) { return a - b; });
     console.log(points);
 
-    document.write(points[0] + ', ' + points[5]);
+    document.write(points[points.length - 1] + ',' + points[0], '<br>');
 
+
+    let max = points[0]; // -Infinity 마이너스 무한대
+    let min = points[0]; // Infinity 무한대
+
+    for (const el of points) {
+      if (max < el) max = el;
+      if (min > el) min = el;
+      }
+      document.write(max + ',');
+      document.write(min, '<br>');
+    
+
+    // (참고) ES6차 spread 연산자
+    document.write(Math.max(...points) + ',');
+    document.write(Math.min(...points));
   </script>
 </head>
 <body>
