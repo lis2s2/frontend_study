@@ -15,24 +15,24 @@
     const lottoArr = []; // 빈 배열
     
     // 풀이6
+
+    // function getRandomInteger(min, max) {
+    //   return Math.floor(Math.random() * (max - min + 1)) + min;
+    // }
+    // for (let index = 1; index < 7; index++) {
+    //   lottoArr.push(getRandomInteger(1, 45));
+    //   // document.write(getRandomInteger(1, 45), '<br>');
+    // }
     
-    // Random random = new Random();
-    // for (int i = 1; i < 7; i++) {
-    // int lotto = (int) (Math.random() *45) + 1;  //아나ㅣ 왜 int 로또 하면 안되느거임 개짜증
-    // System.out.println("로또번호는" + i +':' + lotto);
+      while (lottoArr.length < 6) {
+        let randomNumber = Math.floor(Math.random() * 45) + 1;
+        if (!lottoArr.includes(randomNumber)) {
+            lottoArr.push(randomNumber);
+        }
+      }
 
-    function getRandomInteger(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    
-    for (let index = 1; index < 7; index++) {
-      // document.write(getRandomInteger(1, 45), '<br>');
-      document.write(getRandomInteger(1, 45), '<br>');
-    }
-
-
-
+    lottoArr.sort(function (a, b) { return a - b; });
+    document.write(lottoArr);
 
   </script>
 </head>
