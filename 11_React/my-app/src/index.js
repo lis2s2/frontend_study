@@ -7,6 +7,8 @@ import JsxUse from './chapter3/3.4/JsxUse';
 import Library from './chapter3/Library';
 import Clock from './chapter4/Clock';
 import PropsUse from './chapter5/5.3/PropsUse';
+import CommentEx from './chapter5/5.6/CommentEx';
+import CommentList from './chapter5/CommentList';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,7 +23,19 @@ root.render(
     // <Library />
 
     // 5장 예제
-    <PropsUse />
+    // <PropsUse />
+    // <CommentEx 
+    // date={new Date()}
+    // text="리액트를 즐기세요!" 
+    // user={{
+    //     name: 'Hello Kitty',
+    //     avatarUrl: 'http://placekitten.com/400/300'
+    // }}
+    // />
+    <CommentList 
+    name = "장원석"
+    content = "그거 아니죠?"
+    />
 
 );
 
