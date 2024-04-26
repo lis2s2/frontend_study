@@ -9,6 +9,7 @@ import Clock from './chapter4/Clock';
 import PropsUse from './chapter5/5.3/PropsUse';
 import CommentEx from './chapter5/5.6/CommentEx';
 import CommentList from './chapter5/CommentList';
+import Counter from './chapter7/7.2/Counter';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -32,10 +33,11 @@ root.render(
     //     avatarUrl: 'http://placekitten.com/400/300'
     // }}
     // />
-    <CommentList 
-    name = "장원석"
-    content = "그거 아니죠?"
-    />
+    // <CommentList />
+
+    // 7장 예제
+    <Counter />
+
 
 );
 
