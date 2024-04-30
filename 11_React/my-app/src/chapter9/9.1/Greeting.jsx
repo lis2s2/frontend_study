@@ -20,12 +20,6 @@ function Greeting(props) {
     return <UserGreeting />;
   } // 불필요한 else문은 굳이 안씀
     return <GuestGreeting />;
-  // 2단계: if문 사용 + button 변수에 컴포넌트를 대입
-  return (
-    <div>
-      
-    </div>
-  );
 }
 
 export default Greeting;
