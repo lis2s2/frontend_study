@@ -16,7 +16,7 @@ function LandingPage(props) {
   return (
     <>
       <Toolbar />
-      <div style={{padding: 16}}>리액트 공부 사이트ㅁ</div>
+      <div style={{padding: 16}}>리액트 공부 사이트</div>
     </>
   );
 }
