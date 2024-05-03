@@ -21,17 +21,39 @@ import { useState } from "react";
 
 function SignUp() {
 
-  const [name, setName] = useState('');
+  const [inputs, setInputs] = useState({
+    name: '',
+    gender: '남자'
+  });
 
-  const handleChangeName = (e) => {
-    setName(e.target.value)
+  const { name, gender } = inputs;
+
+  const handleInputChange = (e) => {
+    console.log(e.target);
+
+    const { type, name, onSelect, value } = e.target;
+    const inputValue = type === 'option' ? onSelect : value; 
+    console.log(name, inputValue);
+
+    setInputs({
+      ...inputs,
+      [name]: inputValue
+    });
   };
 
-  const [gender, setGender] = useState('남자');
+  // 
+  // 
+  // const [name, setName] = useState('');
 
-  const handleChangeGender = (e) => {
-    setGender(e.target.value)
-  };
+  // const handleChangeName = (e) => {
+  //   setName(e.target.value)
+  // };
+
+  // const [gender, setGender] = useState('남자');
+
+  // const handleChangeGender = (e) => {
+  //   setGender(e.target.value)
+  // };
 
   const handleSubmit = (e) => {
     alert('이름은 ' + name + ', 성별은 ' + gender);
@@ -44,8 +66,9 @@ function SignUp() {
         이름 입력: 
         <input 
           type="text" 
+          name="name"
           value={name}
-          onChange={handleChangeName}
+          onChange={handleInputChange}
         />
       </label>
 
@@ -53,9 +76,9 @@ function SignUp() {
 
       <label> 
         성별 선택:
-        <select value={gender} onChange={handleChangeGender}>
-          <option value="man">남자</option>
-          <option value="woman">여자</option>
+        <select  value={gender} name="gender" onChange={handleInputChange}>
+          <option value="man" onSelect={'남자'}>남자</option>
+          <option value="woman" onSelect={'여자'}>여자</option>
         </select>
       </label>
 
