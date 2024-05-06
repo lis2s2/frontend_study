@@ -28,16 +28,15 @@ function SignUp() {
 
   const { name, gender } = inputs;
 
-  const handleInputChange = (e) => {
-    console.log(e.target);
+  const handleChangeGender = (e) => {
+    setInputs(e.target.value);
+    console.log(e.target.value);
 
-    const { type, name, onSelect, value } = e.target;
-    const inputValue = type === 'option' ? onSelect : value; 
-    console.log(name, inputValue);
+    const { name, value } = e.target;
 
     setInputs({
       ...inputs,
-      [name]: inputValue
+      [name]: value
     });
   };
 
@@ -56,7 +55,7 @@ function SignUp() {
   // };
 
   const handleSubmit = (e) => {
-    alert('이름은 ' + name + ', 성별은 ' + gender);
+    alert(`이름은 ${name}, 성별은 ${gender}`);
     e.preventDefault();
   };
 
@@ -68,7 +67,7 @@ function SignUp() {
           type="text" 
           name="name"
           value={name}
-          onChange={handleInputChange}
+          onChange={handleChangeGender}
         />
       </label>
 
@@ -76,9 +75,9 @@ function SignUp() {
 
       <label> 
         성별 선택:
-        <select  value={gender} name="gender" onChange={handleInputChange}>
-          <option value="man" onSelect={'남자'}>남자</option>
-          <option value="woman" onSelect={'여자'}>여자</option>
+        <select  value={gender} name="gender" onChange={handleChangeGender}>
+          <option value="man">남자</option>
+          <option value="woman">여자</option>
         </select>
       </label>
 
