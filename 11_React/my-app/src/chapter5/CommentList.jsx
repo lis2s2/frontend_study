@@ -34,7 +34,7 @@ function CommentList(props) {
       {comments.map((comment, index) => {
         console.log(index, comment);
         return <Comment key={index} name={comment.name} content={comment.content} />;
-      })}
+      })} 
 
       {/* map() 함수의 결과 */}
       {
