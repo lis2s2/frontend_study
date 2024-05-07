@@ -4,7 +4,7 @@
 import { useState } from "react";
 
 // 1. 이름 입력받기
-// 이름을 입력할 수 있는 input 태그와 입력된 값을 저장하기 위한 name이라는 state를 정의(초기값 '')
+// 이름을 입력할 수 있는 inpㄹut 태그와 입력된 값을 저장하기 위한 name이라는 state를 정의(초기값 '')
 // 값이 변경되면 이를 처리하기 위한 handleChangeName() 이라는 이벤트 핸들러 정의
 
 // 2. 성별 입력받기
@@ -20,69 +20,70 @@ import { useState } from "react";
 // 2) 각각의 state를 여러 개 만들어도 되고 객체 형태로 한번에 관리해도 됨
 
 function SignUp() {
+  // 여러 개의 state로 관리 시
+  // const [name, setName] = useState('');
+  // const [gender, setGender] = useState('남자');
 
+  // 객체로 관리 시
   const [inputs, setInputs] = useState({
     name: '',
     gender: '남자'
   });
+  const { name, gender } = inputs; // 구조 분해 할당
 
-  const { name, gender } = inputs;
+  // const handleChangeName = (e) => {
+  //   setName(e.target.value);
+  // };
+
+  // const handleChangeGender = (e) => {
+  //   setGender(e.target.value);
+  // };
 
   const handleInputChange = (e) => {
-    console.log(e.target);
+    const { name, value } = e.target;
+    console.log(name, value);
 
-    const { type, name, onSelect, value } = e.target;
-    const inputValue = type === 'option' ? onSelect : value; 
-    console.log(name, inputValue);
+    // 방법1
+    // const copyObj = {
+    //   ...inputs
+    // };
+    // copyObj[name] = value;
+    // setInputs(copyObj);
 
+    // 방법2
     setInputs({
-      ...inputs,
-      [name]: inputValue
+      ...inputs, // 기존의 inputs 객체를 복사한 뒤
+      [name]: value // name 값을 키로 갖는 속성을 동적으로 정의
     });
   };
 
-  // 
-  // 
-  // const [name, setName] = useState('');
-
-  // const handleChangeName = (e) => {
-  //   setName(e.target.value)
-  // };
-
-  // const [gender, setGender] = useState('남자');
-
-  // const handleChangeGender = (e) => {
-  //   setGender(e.target.value)
-  // };
-
   const handleSubmit = (e) => {
-    alert('이름은 ' + name + ', 성별은 ' + gender);
     e.preventDefault();
+    alert(`이름: ${name}, 성별: ${gender}`);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        이름 입력: 
-        <input 
-          type="text" 
-          name="name"
-          value={name}
-          onChange={handleInputChange}
-        />
+        이름:
+        {/* <input type="text" value={name} onChange={handleChangeName} /> */}
+        <input type="text" name="name" value={name} onChange={handleInputChange} />
       </label>
 
       <br />
 
-      <label> 
-        성별 선택:
-        <select  value={gender} name="gender" onChange={handleInputChange}>
-          <option value="man" onSelect={'남자'}>남자</option>
-          <option value="woman" onSelect={'여자'}>여자</option>
+      <label>
+        성별:
+        {/* <select value={gender} onChange={handleChangeGender}> */}
+        <select name="gender" value={gender} onChange={handleInputChange}>
+          <option value="남자">남자</option>
+          <option value="여자">여자</option>
         </select>
       </label>
 
-      <button type="submit">제출</button>
+      <div>
+        <button type="submit">가입하기</button>
+      </div>
     </form>
   );
 };
