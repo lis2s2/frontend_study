@@ -1,4 +1,4 @@
-import styled, { withTheme } from "styled-components";
+import styled, { css, withTheme } from "styled-components";
 // 0. styled-components 설치하기
 // npm install styled-components
 
@@ -18,6 +18,22 @@ const Wrapper = styled.div`
   padding: 1rem;
   background: skyblue;
   text-align: center;
+
+  /* 6. 반응형 디자인
+    - 일반 CSS를 사용할 때와 똑같이 미디어 쿼리 사용 가능
+    - 리액트스럽게 react-responsive 라이브러리 사용
+  */
+  /* 기본적으로 가로 길이를 1024px에 가운데 정렬하고
+    가로 크기가 작아짐에 따라 크기를 줄이고 768px 미만이 되면 꽉 채우기
+  */
+  width: 1024px;
+  margin: 0 auto;
+  @media screen and (max-width: 1024px){
+    width: 768px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 // vscode-styled-components 익스텐션 설치
@@ -38,18 +54,39 @@ const Button = styled.button`
   border: 2px solid black;
   cursor: pointer;
 
-  /* 2. &(parent selector)를 사용하여 바깥쪽 선택자 참조 가능(like Sass) */
-  /* 여기서는 Button 자기 자신을 참조 */
-
+  /* 3. &(parent selector)를 사용하여 바깥쪽 선택자 참조 가능(like Sass) */
+  /* 여기서 &는 Button 자기 자신을 참조 */
   &:hover {
     background: #a7a594;
   }
-`;
+  /* 버튼 사이 간격 띄우기 */
+  & + & {
+    margin-left: 1rem;
+  }
+
+  /* 4. 여러 줄의 스타일 구문을 조건부로 설정해야 하는 경우 css를 불러와 사용 */
+  ${props => props.$inverted && css`
+    background: white;
+    color: #1f1f1f;
+    border: 2px solid white;
+
+    &:hover {
+      background: #a7a594;
+      color: white;
+    }
+  `}
+  `;
+
+// 5. 스타일 확장(커스텀) 하기
+// Button 컴포넌트에 모서리를 둥글게하는 스타일이 추가된 컴포넌트
+const RoundedButton = styled(Button)`
+    border-radius: 16px;
+  `;
 
 function StyledPage() {
   return (
     <Wrapper>
-      🦕💭 
+      🦕💭
       <Title>귀여운 공룡</Title>
 
       <Button width="200px" height="60px">Normal</Button>
@@ -57,6 +94,10 @@ function StyledPage() {
       {/* $는 스타일 지정만을 위한 prop이 DOM 요소로 렌더링되는 것을 
           방지하기 위해 붙여 임시 prop으로 전환할 수 있다. */}
       <Button $dark width="200px">Dark</Button>
+
+      <Button $inverted={true}>Inverted</Button>
+
+      <RoundedButton>Rounded</RoundedButton>
     </Wrapper>
   );
 };
