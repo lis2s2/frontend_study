@@ -39,6 +39,8 @@ import SignUpDialog from './chapter13/13.1.3/SignUpDialog';
 import ProfileCard from './chapter13/ProfileCard';
 import StyledPage from './chapter15/StyledPage';
 import Blocks from './chapter15/Theme/Blocks';
+import ThemeApp from './chapter15/Theme/ThemeApp';
+import ComponentVariable from './chapter7/7.6/ComponentVariable';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -67,6 +69,7 @@ root.render(
     // 7장 예제
     // <Counter />
     // <TextInputWithFocusButton />
+    // <ComponentVariable />
 
     // 8장
     // <Toggle />
@@ -108,7 +111,8 @@ root.render(
 
     // 15장
     // <StyledPage />
-    <Blocks />
+    // <Blocks />
+    <ThemeApp />
 );
 
 // 4장 예제

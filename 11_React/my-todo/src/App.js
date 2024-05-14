@@ -9,6 +9,7 @@ import './index.css';
 import TodoTemplate from './components/TodoTemplate';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
+import { useRef } from 'react';
 
 // 글로벌(공통) 스타일 적용과 reset css 적용
 // createGlobalStyle을 이용하여 글로벌 스타일 컴포넌트를 만들고 가장 첫번째로 렌더링하면 됨
@@ -25,13 +26,66 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
+  // todos 배열 안에 객체 형태로 데이터가 존재
+  // id, 내용, 완료 여부
+  // TodoList에 props로 전달
+  const [todos, setTodos] = React.useState([
+    {
+      id: 1,
+      text: '집에 가기',
+      done: false
+    },
+    {
+      id: 2,
+      text: '낮잠 자기',
+      done: true
+    },
+    {
+      id: 3,
+      text: '저녁 먹기',
+      done: true
+    }
+  ]);
+
+  // 새 객체를 만들 때마다 id값에 1씩 더해줘야 하는데
+  // id값은 렌더링되는 정보가 아님
+  // 단순히 새로운 항목을 만들 때 참조되는 값임
+  // useRef()를 사용하여 변수 생성
+  const nextId = useRef(4);
+  console.log(nextId);
+
+  // todos 배열에 새 할 일 객체를 추가하기 위한 함수
+  const handleInsert = (text) => {
+    const todo = {
+      id: nextId.current,
+      text,
+      done: false
+    };
+
+    // 방법1
+    const copyTodos = [...todos];
+    copyTodos.push(todo);
+    setTodos(copyTodos); // 새로운 배열을 만들어 넣어줌
+    
+    nextId.current += 1;
+  };
+
+  // todos 배열에서 id값으로 항목을 지우기 위한 함수
+  const handleRemove = (id) => {
+    // 방법1
+    const copyTodos = [...todos];
+    const targetIndex = todos.findIndex(todo => todo.id === id);
+    copyTodos.splice(targetIndex, 1);
+    setTodos(copyTodos);
+  };
+
   return (
     <>
       <Reset />
       <GlobalStyle />
       <TodoTemplate>
-        <TodoInsert />
-        <TodoList />
+        <TodoInsert onInsert={handleInsert} />
+        <TodoList todos={todos} onRemove={handleRemove} />
       </TodoTemplate>
     </>
   );

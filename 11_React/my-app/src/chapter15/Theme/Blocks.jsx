@@ -3,14 +3,14 @@ import styled from "styled-components";
 const Wrapper = styled.div `
   display: flex;
   padding: 1rem;
-  background-color: lightgray;
+  background-color: ${props => props.theme.grayBg};
 `;
 
 const Block = styled.div `
-  padding: ${props => props.padding};
+  padding: ${props => props.$padding};
   border: 1px solid black;
   border-radius: 1rem;
-  background-color: ${props => $backgroundColor};
+  background-color: ${props => props.$backgroundColor};
   color: white;
   font-size: 2rem;
   font-weight: bold;
@@ -35,19 +35,19 @@ const blockItems = [
   }
 ];
 
-function Blocks(props) {
+function Blocks() {
   return (
     <Wrapper>
       {/* 퀴즈: 배열 반복 렌더링 및 스타일링 완성 */}
       {blockItems.map((blockItem) => {
         return (
           <Block key={blockItem.label}
-            padding={blockItem.padding}
-            backgroundColor={blockItem.backgroundColor}
+            $padding={blockItem.padding}
+            $backgroundColor={blockItem.backgroundColor}
           >
-          {blockItem.label}
+            {blockItem.label}
           </Block>
-        )
+        );
       })}
     </Wrapper>
   );
