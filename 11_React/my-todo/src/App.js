@@ -63,10 +63,17 @@ function App() {
     };
 
     // 방법1
-    const copyTodos = [...todos];
-    copyTodos.push(todo);
-    setTodos(copyTodos); // 새로운 배열을 만들어 넣어줌
+    // const copyTodos = [...todos];
+    // copyTodos.push(todo);
+    // setTodos(copyTodos); // 새로운 배열을 만들어 넣어줌
     
+
+    // (편법)
+    // setTodos([...todos, todo]); // 새로운 배열 만들어서 todo객체만 추가 
+
+    // 방법2 - 배열의 내장 함수 이용
+    setTodos(todos.concat(todo)); // 배열에 추가해서 새로운 배열 만들기
+
     nextId.current += 1;
   };
 
@@ -79,7 +86,7 @@ function App() {
     // setTodos(copyTodos);
     
     // 방법2 - 배열의 내장 함수 이용
-    setTodos(todos.filter(todo => todo.id !== id));
+    setTodos(todos.filter(todo => todo.id !== id)); //  해당 id가 아닌 애들로 다시 배열 생성
   };
 
   return (
