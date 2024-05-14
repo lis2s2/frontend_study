@@ -73,10 +73,13 @@ function App() {
   // todos 배열에서 id값으로 항목을 지우기 위한 함수
   const handleRemove = (id) => {
     // 방법1
-    const copyTodos = [...todos];
-    const targetIndex = todos.findIndex(todo => todo.id === id);
-    copyTodos.splice(targetIndex, 1);
-    setTodos(copyTodos);
+    // const copyTodos = [...todos];
+    // const targetIndex = todos.findIndex(todo => todo.id === id);
+    // copyTodos.splice(targetIndex, 1);
+    // setTodos(copyTodos);
+    
+    // 방법2 - 배열의 내장 함수 이용
+    setTodos(todos.filter(todo => todo.id !== id));
   };
 
   return (
