@@ -41,6 +41,11 @@ import StyledPage from './chapter15/StyledPage';
 import Blocks from './chapter15/Theme/Blocks';
 import ThemeApp from './chapter15/Theme/ThemeApp';
 import ComponentVariable from './chapter7/7.6/ComponentVariable';
+import CounterEffect from './chapter7/7.3/ex1/CounterEffect';
+import Timer from './chapter7/7.3/ex2/Timer';
+import TimerContainer from './chapter7/7.3/ex2/TimerContainer';
+import EffectSummary from './chapter7/7.3/ex3/EffectSummary';
+import EffectContainer from './chapter7/7.3/ex3/EffectContainer';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -70,6 +75,11 @@ root.render(
     // <Counter />
     // <TextInputWithFocusButton />
     // <ComponentVariable />
+    // <CounterEffect />
+    // <Timer />
+    // <TimerContainer />
+    // <EffectSummary />
+    <EffectContainer />
 
     // 8장
     // <Toggle />
@@ -112,7 +122,7 @@ root.render(
     // 15장
     // <StyledPage />
     // <Blocks />
-    <ThemeApp />
+    // <ThemeApp />
 );
 
 // 4장 예제
