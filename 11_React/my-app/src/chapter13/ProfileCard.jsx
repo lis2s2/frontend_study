@@ -2,9 +2,12 @@ import Card from "./Card";
 
 function ProfileCard() {
   return (
-    <Card title="Suhyeon" backgroundColor="#dee7ff">
-      <p>안녕하세요. 수현이 왔어용</p>
-      <p>갑자기 배부르다</p>
+    <Card
+      title="Goni Kim"
+      backgroundColor="#dee7ff"
+    >
+      <p>안녕하세요. 고니입니다.</p>
+      <p>리액트를 사용해서 개발중입니다.</p>
     </Card>
   );
 };

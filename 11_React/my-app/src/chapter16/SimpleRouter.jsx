@@ -50,8 +50,18 @@ function SimpleRouter() {
         <Route path="/games" element={<GamePage />} />
 
         {/* 방법1. 서브 경로 설정 */}
-        <Route path="/games/hot" element={<HotGamePage />} />
-        <Route path="/games/new" element={<NewGamePage />} />
+        {/* <Route path="/games/hot" element={<HotGamePage />} />
+        <Route path="/games/new" element={<NewGamePage />} /> */}
+
+        {/* 방법2. Nested Route 방식 */}
+        {/* 서브 경로 방식과 차이점: 부모 엘리먼트 + 자식 엘리먼트가 같이 보임 */}
+        {/* 부모 안에 자식들을 렌더링해 보여줌(부모안에서 어디에 보여줄지는 Outlet 컴포넌트로 지정) */}
+        {/* 활용 예: 헤더, 푸터 사이에 메인 영역 */}
+        {/* Nested 안에 또 Nested 가능 */}
+        <Route path="/games" element={<GamePage />}>
+          <Route path="hot" element={<HotGamePage />} />
+          <Route path="new" element={<NewGamePage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

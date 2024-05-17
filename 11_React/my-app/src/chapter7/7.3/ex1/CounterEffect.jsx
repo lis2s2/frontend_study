@@ -7,7 +7,7 @@ function CounterEffect() {
   // 실행 시점: HTML DOM 렌더링 직후(즉, 우리가 만든 컴포넌트가 화면에 나타난 상태 이후)
   useEffect(() => {
     console.log('effect 실행!');
-    
+
     // DOM API로 문서 타이틀 업데이트
     document.title = `clicked ${count} times`;
   // }); // 렌더링 될 때마다 실행됨
@@ -17,10 +17,10 @@ function CounterEffect() {
     <>
       <p>총 {count}번 클릭했습니다.</p>
       <button type="button" onClick={() => {
-        setCount(count+1)
+        setCount(count + 1);
 
         // useEffect와 차이점 비교 테스트
-        document.title = `clicked ${count} times`;
+        // document.title = `clicked ${count} times`;
         // 1. 초기에 타이틀이 안바껴 있음(왜? 처음 마운트 시 실행 안됨)
         // 2. 버튼 클릭 시 count 값이 제대로 반영 안됨(왜? set함수는 비동기 함수)
       }}>
@@ -28,7 +28,6 @@ function CounterEffect() {
       </button>
     </>
   );
-
   // (정리)
   // onClick과 useEffect는 실행 시점이 다르기에 동작이 다를수 밖에 없음(완전히 다른 용도)
   // onClick 속성으로 넣어준 콜백 함수는 "클릭 시 호출되는" 함수이고,

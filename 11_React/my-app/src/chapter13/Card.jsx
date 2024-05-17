@@ -10,9 +10,10 @@ function Card(props) {
       backgroundColor: backgroundColor || 'lightgray'
       // backgroundColor에 falsy 값이 들어오면 기본값으로 'lightgray'를 사용
     }}>
-
       {/* 조건부 렌더링 */}
-      {title && <h1 style={{ borderBottom: '1px solid gray' }}>{title}</h1>} 
+      {title &&
+        <h1 style={{ borderBottom: '1px solid gray' }}>{title}</h1>
+      }
       {children}
     </div>
   );

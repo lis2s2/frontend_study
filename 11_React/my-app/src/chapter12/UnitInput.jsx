@@ -1,4 +1,4 @@
-// 렌더링과 상관 없는 고정값들은 전역 변수로 선언(주로 상수들)
+// 렌더링과 상관없는 고정값들은 전역 변수로 선언(주로 상수들)
 const unitConvert = {
   mm: {
     name: '밀리미터',
@@ -24,11 +24,12 @@ const unitConvert = {
 
 // 지정한 단위로 환산하여 보여주는 컴포넌트
 function UnitInput(props) {
-  const { unit, length } = props; // props.unit, props.length
+  const { unit, length } = props;
 
   return (
     <>
-      <input type="text" value={length * unitConvert[unit].ratio} disabled />{unitConvert[unit].name}
+      <input type="text" value={length * unitConvert[unit].ratio} disabled />
+      {unitConvert[unit].name}
     </>
   );
 };

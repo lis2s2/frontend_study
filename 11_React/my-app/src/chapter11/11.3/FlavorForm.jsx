@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 function FlavorForm() {
-
   const [value, setValue] = useState('coconut');
 
   const handleChange = (e) => {
@@ -12,6 +11,7 @@ function FlavorForm() {
     alert('가장 좋아하는 맛: ' + value);
     e.preventDefault();
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
@@ -22,7 +22,6 @@ function FlavorForm() {
           <option value="coconut">코코넛</option>
           <option value="mango">망고</option>
         </select>
-
         {/* HTML DOM */}
         {/* <select>
           <option value="grapefruit">자몽</option>

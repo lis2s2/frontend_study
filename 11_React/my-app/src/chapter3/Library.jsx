@@ -1,4 +1,4 @@
-import Book from "./book"; // Book 컴포넌트 가져오기
+import Book from "./Book"; // Book 컴포넌트 가져오기
 
 function Library() {
   return (

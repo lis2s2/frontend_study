@@ -2,7 +2,8 @@
 
 import { useContext } from "react";
 
-// Context를 사용하면 모든 컴포넌트를 일일이 통과하지 않고도 원하는 값을 컴포넌트 트리 깊숙한 곳까지 보낼 수 있음
+// Context를 사용하면 모든 컴포넌트를 일일이 통과하지 않고도
+// 원하는 값을 컴포넌트 트리 깊숙한 곳까지 보낼 수 있음
 // 'light'를 기본값으로 하는 테마 Context를 만드는 코드
 const ThemeContext = React.createContext('light');
 

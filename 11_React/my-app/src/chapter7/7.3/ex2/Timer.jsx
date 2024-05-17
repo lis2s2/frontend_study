@@ -13,12 +13,13 @@ function Timer() {
     // 컴포넌트가 언마운트 될 때 호출됨
     return () => {
       clearInterval(timer);
-      console.log(`ID ${timer}번 타이머 종료`);
+      console.log(`ID ${timer}번 타이머 종료!`);
     };
   }, []);
+
   return (
     <>
-      <span>타이머가 시작 됐습니다!</span>
+      <span>⏰타이머가 시작 됐습니다!</span>
     </>
   );
 };

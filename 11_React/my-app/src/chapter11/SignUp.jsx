@@ -4,7 +4,7 @@
 import { useState } from "react";
 
 // 1. 이름 입력받기
-// 이름을 입력할 수 있는 inpㄹut 태그와 입력된 값을 저장하기 위한 name이라는 state를 정의(초기값 '')
+// 이름을 입력할 수 있는 input 태그와 입력된 값을 저장하기 위한 name이라는 state를 정의(초기값 '')
 // 값이 변경되면 이를 처리하기 위한 handleChangeName() 이라는 이벤트 핸들러 정의
 
 // 2. 성별 입력받기

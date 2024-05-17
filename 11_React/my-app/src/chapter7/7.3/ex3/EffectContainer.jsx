@@ -6,8 +6,8 @@ function EffectContainer() {
 
   return (
     <>
-      <button type="button" onClick={() => setIsVisible(false)}>사라짐</button>
-      <button type="button" onClick={() => setIsVisible(true)}>나타남</button>
+      <button type="button" onClick={() => setIsVisible(false)}>사라져라</button>
+      <button type="button" onClick={() => setIsVisible(true)}>나타나라</button>
       {isVisible && <EffectSummary />}
     </>
   );

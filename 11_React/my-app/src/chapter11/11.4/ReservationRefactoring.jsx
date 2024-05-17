@@ -10,38 +10,40 @@ function ReservationRefactoring() {
     numberOfGuests: 2,
     roomType: 'SINGLE'
   });
-
-  const { breakfast, numberOfGuests, roomType } = inputs; // 구조 분해 할당
+  const { breakfast, numberOfGuests, roomType } = inputs; // 구조 분해 할당을 통해 값 추출
 
   const handleInputChange = (e) => {
     console.log(e.target); // 현재 이벤트가 발생한 대상 객체
-    
+
     const { type, name, checked, value } = e.target;
     const inputValue = type === 'checkbox' ? checked : value;
     console.log(name, inputValue);
 
-    // 중요
-    // 리액트 상태에서 객체를 수정해야 할 때에는, 아래와 같이 기존 상태를 직접 수정해서 set함수에 넣으면 안됨
+    // 중요!
+    // 리액트 상태에서 객체를 수정해야 할 때에는, 
+    // 아래와 같이 기존 상태를 직접 수정해서 set함수에 넣으면 안됨
     // inputs[name] = inputValue;
     // setInputs(inputs);
-    // => inputs가 가리키는 객체의 내부 데이터만 바뀐 것이지 주소값(참조값)은 변하지 않았기 때문
+    // => inputs가 가리키는 객체의 내부 데이터만 바뀐것이지 주소값(참조값)은 변하지 않았기 때문
 
-    // 그 대신 새로운 객체를 만들어서 변화를 주소 이를 상태로 사용해야 함
-    // 이러한 작업은 "불변성을 지킨다." 라고 부름(기존 객체는 변경하지 X)
+    // 그 대신 새로운 객체를 만들어서 변화를 주고 이를 상태로 사용해야 함
+    // 이러한 작업을 "불변성을 지킨다." 라고 부름(기존 객체는 변경하지 X)
     // 불변성을 지켜주어야 리액트 컴포넌트에서 상태가 업데이트 됐음을 감지할 수 있고 이에 따라 재렌더링이 진행됨
     // 방법1: 차근차근 방법
-    // const copyInputs = {...inputs};
+    // const copyInputs = {
+    //   ...inputs
+    // };
     // copyInputs[name] = inputValue;
     // setInputs(copyInputs);
 
     // 방법2: 코드 단축 버전
     setInputs({
       ...inputs,
-      [name]:  inputValue
+      [name]: inputValue
     });
 
-    // 결론: 리액트 상태에서 객체를 업데이트 할 때에는 기존 객체를 직접 수정하면 안되고, 새로운 객체(기존 객체의 복사본)를 만들고 그 객체에 변화를 주고 마지막으로 set함수에 넣어줘야 함
-
+    // 결론: 리액트 상태에서 객체를 업데이트 할 때에는 기존 객체를 직접 수정하면 안되고,
+    // 새로운 객체(기존 객체의 복사본)를 만들고 그 객체에 변화를 주고 마지막으로 set함수에 넣어줘야 함
   };
 
   const handleSubmit = (e) => {
@@ -49,20 +51,18 @@ function ReservationRefactoring() {
     alert(`조식 여부: ${breakfast}, 투숙객 수: ${numberOfGuests}, 룸 타입: ${roomType}`);
   };
 
-  // 여러 입력 양식을 제어해야할 때, 각 엘리먼트에 name 속성을 추가하고 
-  // event, target, name 값을 통해 어떤 입력 양식인지 구분할 수 있게 해줌
-  // 그리고 useState에서는 기본 타입의 갑싱 아니라 객체 형태의 상태를 관리
+  // 여러 입력 양식을 제어해야할 때, 각 엘리먼트에 name 속성을 추가하고
+  // event.target.name 값을 통해 어떤 입력 양식인지 구분할 수 있게 해줌
+  // 그리고 useState에서는 기본 타입의 값이 아니라 객체 형태의 상태를 관리
   return (
     <form onSubmit={handleSubmit}>
       <label>
         조식 여부:
         <input 
-          type="checkbox"
+          type="checkbox" 
           name="breakfast" // name 속성 추가
-          // checked 속성은 checkbox랑 radio 타입에 존재하고 boolean 타입의 값
-          checked = {breakfast}
+          checked={breakfast}
           onChange={handleInputChange}
-
         />
       </label>
 
@@ -71,7 +71,7 @@ function ReservationRefactoring() {
       <label>
         투숙객 수:
         <input 
-          type="number"
+          type="number" 
           name="numberOfGuests" // name 속성 추가
           value={numberOfGuests}
           onChange={handleInputChange}
@@ -82,33 +82,34 @@ function ReservationRefactoring() {
 
       룸 타입:
       <label>
-        <input
-          type="radio"
+        <input 
+          type="radio" 
           name="roomType"
           value="SINGLE"
           checked={roomType === 'SINGLE'}
           onChange={handleInputChange}
-        />싱글
+        />
+        싱글
       </label>
-
       <label>
         <input 
-          type="radio"
+          type="radio" 
           name="roomType"
           value="DOUBLE"
           checked={roomType === 'DOUBLE'}
           onChange={handleInputChange}
-        />더블
+        />
+        더블
       </label>
-
       <label>
         <input 
-          type="radio"
+          type="radio" 
           name="roomType"
           value="TWIN"
           checked={roomType === 'TWIN'}
           onChange={handleInputChange}
-        />트윈
+        />
+        트윈
       </label>
 
       <button type="submit">제출</button>

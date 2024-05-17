@@ -1,6 +1,6 @@
 .FancyBorder {
   padding: 10px 10px;
-  border: 13px solid;
+  border: 10px solid;
 }
 
 .FancyBorder-blue {
@@ -8,9 +8,6 @@
 }
 .FancyBorder-red {
   border-color: red;
-}
-.FancyBorder-zjffj {
-  border-color: rgb(255, 255, 197);
 }
 
 .Dialog-title {

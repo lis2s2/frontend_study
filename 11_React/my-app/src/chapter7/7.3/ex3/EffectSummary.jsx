@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // useEffect()가 실행되는 모든 케이스를 정리
 function EffectSummary() {
@@ -11,7 +10,7 @@ function EffectSummary() {
   // 2) 마운트 시에는 무조건 실행됨
   // 3) return 하는 함수는 언마운트 시에 무조건 실행됨
 
-  // 렌더링 될 때마다 (마운트 + 업데이트) 매번 실행됨
+  // 렌더링 될 때마다(마운트 + 업데이트) 매번 실행됨
   useEffect(() => {
     console.log('나는 매번 실행됨');
 
@@ -31,7 +30,7 @@ function EffectSummary() {
 
   // 마운트 + name이 변할 때마다 실행됨
   useEffect(() => {
-    console.log('%cname이 변함', 'color: green; background: #d6ffd6;');
+    console.log('%cname이 변함', 'color: blue; background: #e2d6fd;');
 
     return () => {
       // 해당 effect가 실행되기 전과 언마운트 시 실행됨
@@ -44,7 +43,7 @@ function EffectSummary() {
 
     return () => {
       // 언마운트 될 때만 실행됨
-      console.log('%c언마운트 될 때만 실행', 'color: #ff0000; background: black;');
+      console.log('%c언마운트 될 때만 실행', 'color: red; background: black;');
     };
   }, []);
 

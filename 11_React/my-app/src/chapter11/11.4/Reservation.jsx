@@ -22,15 +22,15 @@ function Reservation() {
     e.preventDefault();
     alert(`조식 여부: ${breakfast}, 투숙객 수: ${numberOfGuests}, 룸 타입: ${roomType}`);
   };
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
         조식 여부:
         <input 
-          type="checkbox"
+          type="checkbox" 
           // checked 속성은 checkbox랑 radio 타입에 존재하고 boolean 타입의 값
-          checked = {breakfast}
+          checked={breakfast}
           onChange={handleBreakfastChange}
         />
       </label>
@@ -40,7 +40,7 @@ function Reservation() {
       <label>
         투숙객 수:
         <input 
-          type="number"
+          type="number" 
           value={numberOfGuests}
           onChange={handleGuestsChange}
         />
@@ -50,33 +50,34 @@ function Reservation() {
 
       룸 타입:
       <label>
-        <input
-          type="radio"
-          name="roonType"
+        <input 
+          type="radio" 
+          name="roomType"
           value="SINGLE"
           checked={roomType === 'SINGLE'}
           onChange={handleRoomChange}
-        />싱글
+        />
+        싱글
       </label>
-
       <label>
         <input 
-          type="radio"
-          name="roonType"
+          type="radio" 
+          name="roomType"
           value="DOUBLE"
           checked={roomType === 'DOUBLE'}
           onChange={handleRoomChange}
-        />더블
+        />
+        더블
       </label>
-
       <label>
         <input 
-          type="radio"
-          name="roonType"
+          type="radio" 
+          name="roomType"
           value="TWIN"
           checked={roomType === 'TWIN'}
           onChange={handleRoomChange}
-        />트윈
+        />
+        트윈
       </label>
 
       <button type="submit">제출</button>

@@ -1,5 +1,6 @@
-import Blocks from "./Blocks";
 import { ThemeProvider } from "styled-components";
+import Blocks from "./Blocks";
+
 // 앱 전반적으로 사용할 색들을 테마로 만들어놓고 사용하면 좋음
 // 디자이너에게 받은 디자인(컬러) 가이드를 참고하여 만듦
 const theme = {

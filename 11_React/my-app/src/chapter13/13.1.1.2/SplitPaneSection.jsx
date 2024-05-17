@@ -1,7 +1,7 @@
-import './SplitPaneSection.css';
+import './SplitPaneSection.css'
 
 function Contacts() {
-  return <div className='Contacts' />; // 자식쪽에 쓸 내용 없으면 그냥 닫아도 ㄱㅊ
+  return <div className='Contacts' />;
 }
 
 function Chat() {
@@ -11,9 +11,10 @@ function Chat() {
 // 화면을 왼쪽과 오른쪽으로 분할해서 보여주는 컴포넌트
 function SplitPane(props) {
   console.log(props);
+
   return (
     <div className='SplitPane'>
-      {/* 1. */}
+      {/* 1 */}
       {/* <div className='SplitPane-left'>
         {props.children[0]}
       </div>
@@ -21,7 +22,7 @@ function SplitPane(props) {
         {props.children[1]}
       </div> */}
 
-      {/* 2. */}
+      {/* 2 */}
       <div className='SplitPane-left'>
         {props.left}
       </div>
@@ -37,15 +38,17 @@ function SplitPane(props) {
 // 별도로 props를 정의해서 각각 원하는 컴포넌트(엘리먼트)를 넣어주면 됨
 function SplitPaneSection() {
   return (
-    // 1.
+    // 1
     // <SplitPane>
     //   <Contacts />
     //   <Chat />
     // </SplitPane>
 
-    // 2.
-    <SplitPane left={<Contacts />} right={<Chat />} />
-
+    // 2
+    <SplitPane 
+      left={<Contacts />} 
+      right={<Chat />}
+    />
   );
 };
 
