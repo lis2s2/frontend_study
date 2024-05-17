@@ -12,6 +12,8 @@ import TodoList from './components/TodoList';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import { v4 as uuidv4 } from "uuid";
+import Modal from './components/Modal';
+import { useState } from 'react';
 
 // 글로벌(공통) 스타일 적용과 reset css 적용
 // createGlobalStyle을 이용하여 글로벌 스타일 컴포넌트를 만들고 가장 첫번째로 렌더링하면 됨
@@ -32,22 +34,46 @@ function App() {
   // id, 내용, 완료 여부
   // TodoList에 props로 전달
   const [todos, setTodos] = React.useState([
-    {
-      id: 1,
-      text: '집에 가기',
-      done: false
-    },
-    {
-      id: 2,
-      text: '낮잠 자기',
-      done: true
-    },
-    {
-      id: 3,
-      text: '저녁 먹기',
-      done: true
-    }
+    // {
+    //   id: 1,
+    //   text: '집에 가기',
+    //   done: false
+    // },
+    // {
+    //   id: 2,
+    //   text: '낮잠 자기',
+    //   done: true
+    // },
+    // {
+    //   id: 3,
+    //   text: '저녁 먹기',
+    //   done: true
+    // }
   ]);
+
+  const [showModal, setShowModal] = useState(false); // 모달 상태
+  const [editTodo, setEditTodo] = useState({}); // 현재 수정할 todo 상태
+
+  const handleOpenModal = (id) => {
+    // 모달 열면서 현재 수정할 todo를 state에 저장
+    setEditTodo(todos.find(todo => todo.id === id));
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleChange = (e) => { // 제어 컴포넌트로 관리
+    setEditTodo({
+      ...editTodo, 
+      text: e.target.value
+    });
+  };
+
+  const handleEdit = () => { // 실제 수정
+    setTodos(todos.map(todo=> todo.id === editTodo.id ? editTodo : todo));
+    handleCloseModal();
+  };
   
   // 로컬 스토리지에서 가져오기
   useEffect(() => {
@@ -124,8 +150,15 @@ function App() {
       <GlobalStyle />
       <TodoTemplate>
         <TodoInsert onInsert={handleInsert} />
-        <TodoList todos={todos} onRemove={handleRemove} onToggle={handleToggle} />
+        <TodoList todos={todos} onRemove={handleRemove} onToggle={handleToggle} onModal={handleOpenModal}/>
       </TodoTemplate>
+
+      {/* 수정하기 모달 */}
+      {showModal && (
+      <Modal title="할 일 수정" onClose={handleCloseModal} onEdit={handleEdit}>
+        <input type="text" value={editTodo.text} onChange={handleChange} />
+      </Modal>
+      )}
     </>
   );
 }

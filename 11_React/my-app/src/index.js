@@ -46,6 +46,7 @@ import Timer from './chapter7/7.3/ex2/Timer';
 import TimerContainer from './chapter7/7.3/ex2/TimerContainer';
 import EffectSummary from './chapter7/7.3/ex3/EffectSummary';
 import EffectContainer from './chapter7/7.3/ex3/EffectContainer';
+import SimpleRouter from './chapter16/SimpleRouter';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -79,7 +80,7 @@ root.render(
     // <Timer />
     // <TimerContainer />
     // <EffectSummary />
-    <EffectContainer />
+    // <EffectContainer />
 
     // 8장
     // <Toggle />
@@ -123,6 +124,9 @@ root.render(
     // <StyledPage />
     // <Blocks />
     // <ThemeApp />
+
+    // 16장
+    <SimpleRouter />
 );
 
 // 4장 예제
