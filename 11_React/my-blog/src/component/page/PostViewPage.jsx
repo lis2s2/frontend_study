@@ -2,6 +2,9 @@ import Button from "../ui/Button";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import data from "../../data.json";
+import CommentList from "../list/CommentList";
+import TextInput from "../ui/TextInput";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   padding: 16px;
@@ -46,14 +49,16 @@ const CommentLabel = styled.p`
 function PostViewPage() {
   const navigate = useNavigate();
 
+  // 댓글 내용을 위한 state
+  const [comment, setComment] = useState('');
   // URL 파라미터로 전달받은 postId값 가져오기
   // useParams(): URL 파라미터 경로에 입력된 값을 가져올 수 있음
   console.log(useParams());
   const { postId } = useParams();
 
   // 배열 전체에서 해당되는 글 찾기
-  const post = data.find(() => {
-    
+  const post = data.find((item) => {
+    return item.id === postId;
   });
 
   return (
@@ -62,12 +67,19 @@ function PostViewPage() {
         <Button title="뒤로 가기" onClick={() => navigate('/')} />
         <PostContainer>
           {/* 데이터 바인딩 */}
-          <TitleText></TitleText>
+          <TitleText>{post.title}</TitleText>
+          <ContentText>{post.content}</ContentText>
         </PostContainer>
-          <ContentText>댓글</ContentText>
+          <ContentText >댓글</ContentText>
           {/* 댓글 리스트 */}
+          {/* 퀴즈: 데이터 바인딩 */}
+          <CommentList comments={post.comments}/>
+
           {/* 댓글 입력 */}
+          <TextInput height={40} value={comment} onChange={(e) => setComment(e.target.value)} />
+
           {/* 댓글 등록 버튼 */}
+          <Button title="댓글 등록" onClick={() => navigate('/')} />
 
       </Container>
     </Wrapper>

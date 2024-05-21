@@ -17,7 +17,7 @@ const TodoTemplateWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Ownglyph_meetme-Rg';
+  /* font-family: 'Ownglyph_meetme-Rg'; */
   }
 
   .content {
