@@ -23,7 +23,6 @@ const StyledInput = styled.input`
   &::placeholder {
     color: #000000;
   }
-
 `;
 
 const StyledButton = styled.button`

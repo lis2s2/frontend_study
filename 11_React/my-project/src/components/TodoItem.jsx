@@ -4,15 +4,18 @@ const Todoitem = styled.div`
   width: 300px;
   height: 50px;
   border: 1px solid black;
+  border-radius: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-function TodoItem() {
+function TodoItem(props) {
+  const { todo, handleChange,  } = props;
+
   return (
-    <Todoitem>
-      코알누 짱짱걸
+    <Todoitem onChange={handleChange}>
+      {todo.map(item => <TodoItem item={item} />)}
     </Todoitem>
   );
 };
