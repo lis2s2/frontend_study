@@ -32,12 +32,12 @@ function TodoBoard(props) {
       <h1 className="app-title">Todo List</h1>
       {/* <div className="content" handleChange={handleChange}>{todo}</div> */}
 
-      {todo.map(item => 
-      <TodoItem item={item} 
-                key={todo.id} 
-                contents={inputValue} 
-                onRemove={handleRemove}
-                onDoneRemove={handleDoneRemove} />)}
+      {todo.map(item => {return (<TodoItem item={item} 
+                key={item.id} 
+                // contents={inputValue} 
+                // onRemove={handleRemove}
+                onDoneRemove={handleDoneRemove} />)})
+      }
 
       <h1>Done</h1>
       

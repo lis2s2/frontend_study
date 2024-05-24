@@ -33,7 +33,7 @@ function App() {
   // todos 배열 안에 객체 형태로 데이터가 존재
   // id, 내용, 완료 여부
   // TodoList에 props로 전달
-  const [todos, setTodos] = React.useState([
+  const [todos, setTodos] = useState([
     // {
     //   id: 1,
     //   text: '집에 가기',

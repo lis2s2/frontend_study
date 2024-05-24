@@ -78,16 +78,16 @@ function App() {
   // 추가 기능
   const addTodo = () => {
 
-    const newTodo = {
-      id: uuidv4(),
-      contents: inputValue
-    };
+  //   const newTodo = {
+  //     id: uuidv4(),
+  //     contents: inputValue
+  //   };
 
-    if (!inputValue) {
-      alert('내용을 입력하세요!');
-      return;
-    }
-    else setTodo([...todo, newTodo]);
+  //   if (!inputValue) {
+  //     alert('내용을 입력하세요!');
+  //     return;
+  //   }
+  //   else setTodo([...todo, newTodo]);
   }
 
   // 할 일 삭제

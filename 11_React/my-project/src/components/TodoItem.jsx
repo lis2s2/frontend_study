@@ -10,13 +10,17 @@ const Todoitem = styled.div`
   justify-content: center;
 `;
 
+// <Todoitem onChange={handleChange}>
+  {/* {todo.map(item => <TodoItem item={item} />)} */}
+{/* </Todoitem> */}
 function TodoItem(props) {
-  const { todo, handleChange,  } = props;
-
+  const { item, handleChange } = props;
+  
   return (
-    <Todoitem onChange={handleChange}>
-      {todo.map(item => <TodoItem item={item} />)}
-    </Todoitem>
+    <>
+      <p>gdd    
+      </p>
+    </>
   );
 };
 
