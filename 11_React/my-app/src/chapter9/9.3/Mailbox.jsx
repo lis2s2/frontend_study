@@ -2,6 +2,7 @@ import React from 'react';
 
 function Mailbox(props) {
   const unreadMessages = props.unreadMessages;
+
   return (
     <>
       <h1>안읽은 메일 보관함</h1>
@@ -22,6 +23,7 @@ function Mailbox(props) {
       */}
       {false && <h1>Messages: {unreadMessages.length}</h1>}
       {false}
+
       {unreadMessages.length && <h1>Messages: {unreadMessages.length}</h1>}
       {0}
     </>

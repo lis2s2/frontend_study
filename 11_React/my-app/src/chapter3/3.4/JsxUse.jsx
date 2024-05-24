@@ -6,9 +6,9 @@ function JsxUse() {
   // 1. 꼭 닫혀야 하는 태그
   // const element = (
   //   <div>
-  //     {/* <div>
-  //       <input type="text">
-  //       <br>  */}
+  //     {/* <div> */}
+  //     {/* <input type="text"> */}
+  //     {/* <br> */}
 
   //     {/* HTML에서는 태그를 닫지 않고 사용 가능
   //       리액트에서는 태그를 열었으면 무조건 닫아야 함 */}
@@ -16,49 +16,48 @@ function JsxUse() {
   //     <input type="text" />
   //     <br />
   //   </div>
-  // ); 
+  // );
 
   // 2. 꼭 감싸져야만 하는 태그
   // 두개 이상의 태그는 무조건 하나의 태그로 감싸져있어야 함
   // const element = (
-    // 반드시 하나의 부모 태그를 감싸져야 함
-    // <div>
-    //   <div>안녕하세요.</div>
-    //   <div>안녕히계세요.</div>
-    // </div>
+  //   // 반드시 하나의 부모 태그로 감싸져야 함
+  //   // <div>
+  //   //   <div>안녕하세요.</div>
+  //   //   <div>안녕히계세요.</div>
+  //   // </div>
 
-    // 이렇게 단순히 감싸기 위하여 불필요한 div로 감싸는게 별로 좋지 않을 수 있음
-    // HTML 중첩 구조가 복잡해지며 그에 따른 스타일 설정을 할 때도 복잡해짐
-    // 이때 사용하는 것이 React Fragment
-    // <React.Fragment>
-      // <div>안녕하세요.</div>
-      // <div>안녕히계세요.</div>
-    // </React.Fragment>
-
-    // React.Fragment는 생략 가능
-    // <>
-    //   <div>안녕하세요.</div>
-    //   <div>안녕히계세요.</div>
-    // </>
-  // 
-// );
+  //   // 이렇게 단순히 감싸기 위하여 불필요한 div로 감싸는게 별로 좋지 않을 수 있음
+  //   // HTML 중첩 구조가 복잡해지며 그에 따른 스타일 설정을 할 때도 복잡해짐
+  //   // 이때 사용하는 것이 React Fragment
+  //   // <React.Fragment>
+  //   //   <div>안녕하세요.</div>
+  //   //   <div>안녕히계세요.</div>
+  //   // </React.Fragment>
+    
+  //   // React.Fragment는 생략 가능
+  //   <>
+  //     <div>안녕하세요.</div>
+  //     <div>안녕히계세요.</div>
+  //   </>
+  // );
 
   // 3. JSX 안에 자바스크립트 값 또는 표현식 사용하기
   // 자바스크립트 변수(또는 함수)를 사용할 때는 {} 사용
   const name = 'react';
 
   const user = {
-    firstName: 'SH',
-    lastName: 'Lee'
+    firstName: 'Goni',
+    lastName: 'Kim'
   };
 
   const formatName = (user) => {
     return `${user.firstName} ${user.lastName}`;
   };
 
-  // const element = ( 
+  // const element = (
   //   <>
-  //     <div>{name}배우기</div>
+  //     <div>{name} 배우기</div>
   //     <h1>Hello, {formatName(user)}</h1>
   //   </>
   // );
@@ -74,8 +73,8 @@ function JsxUse() {
 
   // const element = (
   //   <>
-  //   <div style={style}>리액트 공부하기</div>
-  //   <div className="gray-box"></div>
+  //     <div style={style}>리액트 공부하기</div>
+  //     <div className="gray-box"></div>
   //   </>
   // );
 
@@ -84,15 +83,15 @@ function JsxUse() {
 
   const element = (
     <>
-    {/* 주석은 화면에 보이지 않습니다. */}
-    // 주석은 화면에 보이지 않습니다.
-    /* 주석은 화면에 보이지 않습니다. */
-    
-    <div
-      // 열리는 태그 내부에서는 이렇게 주석 작성
-    >
-      주석 테스트
-    </div>
+      {/* 주석은 화면에 보이지 않습니다. */}
+      // 주석은 화면에 보이지 않습니다.
+      /* 주석은 화면에 보이지 않습니다. */
+
+      <div
+        // 열리는 태그 내부에서는 이렇게 주석 작성
+      >
+        주석 테스트
+      </div>
     </>
   );
 
@@ -100,4 +99,4 @@ function JsxUse() {
 }
 
 export default JsxUse; // JsxUse 함수 컴포넌트 내보내기
-// export를 해줘야 다른 곳에서 import해서 사용 가능
+// export를 해줘야 다른곳에서 import 해서 사용 가능

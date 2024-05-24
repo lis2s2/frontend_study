@@ -20,48 +20,69 @@ import { useState } from "react";
 // 2) 각각의 state를 여러 개 만들어도 되고 객체 형태로 한번에 관리해도 됨
 
 function SignUp() {
+  // 여러 개의 state로 관리 시
+  // const [name, setName] = useState('');
+  // const [gender, setGender] = useState('남자');
 
+  // 객체로 관리 시
   const [inputs, setInputs] = useState({
     name: '',
     gender: '남자'
   });
+  const { name, gender } = inputs; // 구조 분해 할당
 
-  const { name, gender } = inputs;
+  // const handleChangeName = (e) => {
+  //   setName(e.target.value);
+  // };
 
+  // const handleChangeGender = (e) => {
+  //   setGender(e.target.value);
+  // };
+
+<<<<<<< HEAD
   const handleChangeGender = (e) => {
     setInputs(e.target.value);
     console.log(e.target.value);
 
     const { name, value } = e.target;
+=======
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
 
+    // 방법1
+    // const copyObj = {
+    //   ...inputs
+    // };
+    // copyObj[name] = value;
+    // setInputs(copyObj);
+>>>>>>> da0cde1e96de56ec93743b887200199b6d8764c2
+
+    // 방법2
     setInputs({
+<<<<<<< HEAD
       ...inputs,
       [name]: value
+=======
+      ...inputs, // 기존의 inputs 객체를 복사한 뒤
+      [name]: value // name 값을 키로 갖는 속성을 동적으로 정의
+>>>>>>> da0cde1e96de56ec93743b887200199b6d8764c2
     });
   };
 
-  // 
-  // 
-  // const [name, setName] = useState('');
-
-  // const handleChangeName = (e) => {
-  //   setName(e.target.value)
-  // };
-
-  // const [gender, setGender] = useState('남자');
-
-  // const handleChangeGender = (e) => {
-  //   setGender(e.target.value)
-  // };
-
   const handleSubmit = (e) => {
+<<<<<<< HEAD
     alert(`이름은 ${name}, 성별은 ${gender}`);
+=======
+>>>>>>> da0cde1e96de56ec93743b887200199b6d8764c2
     e.preventDefault();
+    alert(`이름: ${name}, 성별: ${gender}`);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
+<<<<<<< HEAD
         이름 입력: 
         <input 
           type="text" 
@@ -69,19 +90,35 @@ function SignUp() {
           value={name}
           onChange={handleChangeGender}
         />
+=======
+        이름:
+        {/* <input type="text" value={name} onChange={handleChangeName} /> */}
+        <input type="text" name="name" value={name} onChange={handleInputChange} />
+>>>>>>> da0cde1e96de56ec93743b887200199b6d8764c2
       </label>
 
       <br />
 
+<<<<<<< HEAD
       <label> 
         성별 선택:
         <select  value={gender} name="gender" onChange={handleChangeGender}>
           <option value="man">남자</option>
           <option value="woman">여자</option>
+=======
+      <label>
+        성별:
+        {/* <select value={gender} onChange={handleChangeGender}> */}
+        <select name="gender" value={gender} onChange={handleInputChange}>
+          <option value="남자">남자</option>
+          <option value="여자">여자</option>
+>>>>>>> da0cde1e96de56ec93743b887200199b6d8764c2
         </select>
       </label>
 
-      <button type="submit">제출</button>
+      <div>
+        <button type="submit">가입하기</button>
+      </div>
     </form>
   );
 };

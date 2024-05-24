@@ -23,14 +23,13 @@ const students = [
 
 // 출석부 컴포넌트 
 function AttendanceBook() {
-  // const attendance = students.map((student, index) => {
-  //   return <li key={index}>{student}</li>
-  // })
-
   return (
     <ul>
       {/* Quiz: 배열을 반복 렌더링 해보기 */}
-      {students.map((student) => <li key={student.id}>{student.name} ({student.email})</li>)}
+      {/* {students.map((student) => {
+        return <li key={student.id}>{student.name} ({student.email})</li>;
+      })} */}
+      {students.map(student => <li key={student.id}>{student.name} ({student.email})</li>)}
     </ul>
   );
 };

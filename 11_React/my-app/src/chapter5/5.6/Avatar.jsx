@@ -1,8 +1,9 @@
 import React from 'react';
 
 function Avatar(props) {
+  console.log(props);
+
   return (
-    <>
     <img className="avatar"
       src={props.user.avatarUrl}
       alt={props.user.name}
@@ -12,7 +13,6 @@ function Avatar(props) {
         borderRadius: '50%'
       }}
     />
-    </>
   );
 }
 
