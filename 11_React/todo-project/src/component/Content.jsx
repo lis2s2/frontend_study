@@ -50,7 +50,6 @@ function Content(props) {
     <div>
       {/* autocomplete: 자동완성 */}
       <input id="inputValue" autocomplete="on" value={inputValue} type="text" placeholder="입력하세요" onChange={handleChange} />
-      {/* <input type="button" value="➕" onClick={addItem}></input> */}
       <button type="button" onClick={addItem}>➕</button>
 
       {/* props를 이용하여 items을 TodoList 컴포넌트에 전달 */}

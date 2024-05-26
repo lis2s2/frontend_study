@@ -75,10 +75,13 @@ function TodoListItem({ todo: { id, text, done }, onRemove, onToggle, onModal })
       <Checkbox done={done} onClick={() => onToggle(id)}>
         {done? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
       </Checkbox>
+
       <Text done={done}>{text}</Text>
+
       <Edit onClick={() => onModal(id)}>
         <MdEdit />
       </Edit>
+      
       <Remove onClick={() => onRemove(id)}>
         <MdRemoveCircleOutline />
       </Remove>

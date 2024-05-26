@@ -1,45 +1,60 @@
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
+import TodoDone from "./TodoDone";
 
 const TodoBoardWrapper = styled.div`
   width: 512px;
   margin: 0 auto;
-  // margin-top: 6rem;
+  /* margin-top: 6rem; */
   border-radius: 4px;
   overflow: hidden;
+  background: white;
+  border-radius: 2rem;
+  box-sizing: border-box;
+  overflow-x: auto;
+  /* white-space: nowrap; */
+  /* flex-wrap: wrap; */
 
-  .app-title {
-  background: skyblue;
-  color: white;
-  height: 4rem;
-  font-size: 2rem;
+  .board-title {
+  /* font-family: 'PyeongChangPeace-Bold'; */
+  color: #000000;
+  height: 1.5rem;
+  font-size: 1.4rem;
+  padding: 1.5rem 0.5rem 0.5rem 2rem;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  overflow: auto; 
+}
+
+.content {
+  /* background: lightgray; */
+  overflow-y: auto;
+  white-space: wrap;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'PyeongChangPeace-Bold';
-  }
-
-  .content {
-    background: white;
+  padding: 0 3rem;
+  flex-direction: row-reverse;
   }
 `;
 
 function TodoBoard(props) {
-  const { todo, inputValue, handleRemove,  handleDoneRemove, handledone, handleCancel} = props;
+  const { todo, onRemove, onDone, onDoneRemove } = props;
 
   return (
     <TodoBoardWrapper>
-      {/* <div className="content" handleChange={handleChange}>{todo}</div> */}
-      <h1>List</h1>
-      {todo.map(item => {return (<TodoItem item={item} 
-                key={item.id} 
-                // contents={inputValue} 
-                // onRemove={handleRemove}
-                onDoneRemove={handleDoneRemove} />)})
-      }
+      <h1 className="board-title">🌟List</h1>
+      <div className="content">
+        {todo.map(item => <TodoItem key={item.id} item={item} onRemove={onRemove} onDone={onDone} />)
+          // contents={inputValue} 
+        }
+      </div>
 
-      <h1>Done</h1>
-      
+      <h1 className="board-title">✔️Done</h1>
+      <div className="content">
+        {/* {todo.map(done => <TodoDone key={done.id} done={done} onDone={onDone} onDoneRemove={onDoneRemove} />)} */}
+      </div>
+    
     </TodoBoardWrapper>
   );
 };

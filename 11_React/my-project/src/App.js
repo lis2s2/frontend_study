@@ -1,24 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
 import { useRef, useState } from 'react';
-import reset, { Reset } from 'styled-reset'
+import {reset } from 'styled-reset'
 import styled from "styled-components";
 import TodoBoard from './components/TodoBoard';
 import { createGlobalStyle } from 'styled-components'
 import { v4 as uuidv4 } from "uuid";
 
 const GlobalStyle = createGlobalStyle`
+  // 스타일 리셋
   ${reset}
 
   body {
-    font-family: 'KCCChassam'; 
+    /* font-family: 'KCCChassam';  */
     font-family: 'PyeongChangPeace-Bold';
     font-size: 1.3rem;
     background: #e9ecef;
     width: 512px;
     margin: 0 auto;
-    margin-top: 5rem;
-    border-radius: 4px;
+    margin-top: 3rem;
+    /* border-radius: 2rem; */
     overflow: hidden;
   }
 
@@ -30,72 +31,81 @@ const GlobalStyle = createGlobalStyle`
 
 .app-title {
   background: skyblue;
+  font-family: 'PyeongChangPeace-Bold';
   color: white;
   height: 4rem;
   font-size: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'PyeongChangPeace-Bold';
+  border-radius: 2rem;
   }
 `;
 
-const TodoInsertWrapper = styled.form`
+
+const TodoInputWrapper = styled.form`
   display: flex;
   background: lightyellow;
+  border-radius: 2rem;
 `;
 
 const StyledInput = styled.input`
-  /* 기본 스타일 초기화 */
-  /* font-family: 'Ownglyph_meetme-Rg'; */
   background: none;
   outline: none;
   border: none;
-  padding: 0.5rem;
-  font-size: 1.3rem;
+  padding: 0.5rem 1.5rem;
+  font-family: 'NanumBarunGothic';
+  font-size: 1rem;
   line-height: 1.5;
   color: #000000;
-  flex: 1; // 버튼을 제외한 영역을 모두 차지하기
+  flex: 1;
   &::placeholder {
     color: #000000;
   }
 `;
 
 const StyledButton = styled.button`
-  border: none;
-  background: #868e96;
+  background: skyblue;
   color: white;
-  padding: 0 1rem;
-  font-size: 1.5rem;
+  border: none;
+  padding: 1rem 1.7rem;
+  font-family: 'NanumBarunGothic';
+  font-size: 1rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: 0.2s background ease-in;
-
+  border-radius: 2rem;
   &:hover {
-    background: #adb5bd;
+    background: lightblue;
   }
 `;
 
+
 function App() {
+  // 기본 투두
   const [todo, setTodo] = useState([
     {
       id: uuidv4(),
       contents: '리액트기초를 공부해봅시다.',
+      done : false
     },
     {
       id: uuidv4() + 1,
       contents: '리액트기초를 공부해봅시다222.',
-    },
+      done : false
+    }
   ]);
 
+  // 입력 투두 
   const [inputValue, setInputValue] = useState('');
 
+  // 완료 투두 
   const [doneTodo, setDoneTodo] = useState([]);
 
   // 추가 기능
   const addTodo = (contents) => {
-
     const newTodo = {
       id: uuidv4(),
       contents,
@@ -111,18 +121,20 @@ function App() {
 
   // 할 일 삭제
   const handleRemove = (id) => {
-    setTodo(todo.filter(t => t.id !== id));
+    setTodo(todo.filter(t=> t.id !== id));
   };
 
   // 할 일 완료 기능 
   const handledone = (d) => {
     const newDone = {
-      id: d.id,
-      contents: d.inputValue
+      id: uuidv4(),
+      // contents,
+      done : true
     };
 
     setDoneTodo([...doneTodo, newDone]);
     setTodo(todo.filter(t => t.id !== d.id));
+    // setTodo(todo.map(t => t.id !== id ? {...todo, done: !todo.done} : todo));
   };
 
   // 완료 삭제 기능
@@ -134,13 +146,12 @@ function App() {
   const handleCancel = (t) => {
     const newTodo = {
       id: t.id,
-      contents: t.inputValue
+      contents: t.contents
     };
 
     setTodo([...todo, newTodo]);
     setDoneTodo([doneTodo.filter(d => t.id !== d.id)]);
   };
-
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -150,7 +161,8 @@ function App() {
     e.preventDefault();
     // addTodo 함수에 값이 inputValue 
     addTodo(inputValue);
-    // 다신 빈값으로 만들어줌
+
+    // 다시 빈값으로 만들어줌
     setInputValue('');
     // const handleInsert = (text) => {
     //   setTodoList(todos.concat(addItem));
@@ -160,17 +172,18 @@ function App() {
     return (
       <main>
         <GlobalStyle />
+        {/* 타이틀 */}
+        <h1 className="app-title">Todo</h1>
 
-        <h1 className="app-title">Todo List</h1>
-
-        <TodoInsertWrapper onSubmit={handleSubmit}>
-          {/* 인풋창과 버튼 */}
+        {/* 인풋창과 버튼 */}
+        <TodoInputWrapper onSubmit={handleSubmit}>
           {/* 인풋창에 값을 입력하고 버튼을 클릭하면 아이템 추가 */}
-          <StyledInput type="text" placeholder='내용을 입력하세요' value={inputValue} onChange={handleChange} />
-          <StyledButton type="submit" onClick={handleSubmit}>추가</StyledButton>
-        </TodoInsertWrapper>
+          <StyledInput type="text" placeholder='©lis2s2' value={inputValue} onChange={handleChange} />
+          <StyledButton type="submit" onClick={handleSubmit}>추 가</StyledButton>
+        </TodoInputWrapper>
 
-        <TodoBoard todo={todo} />
+        {/* 투두 */}
+        <TodoBoard todo={todo} onRemove={handleRemove} onDone={handledone} onDoneRemove={handleDoneRemove} />
 
       </main>
     );

@@ -58,32 +58,23 @@ const StyledButton = styled.button`
   }
 `;
 
-const Item = styled.div`
-  /* margin-left: 0.5rem; */
-  /* flex: 1; */
-`;
+function TodoDone(props) {
+  const { done: { id, contents, done },item, onDoneRemove } = props;
 
-// <Todoitem onChange={handleChange}>
-  {/* {todo.map(item => <TodoItem item={item} />)} */}
-{/* </Todoitem> */}
-function TodoItem(props) {
-  const { item: { id, contents, done }, onRemove, onDone } = props;
-  
   return (
+    <>
     <Todoitems>
       <div className="scroll">
-        <Item>
-          {contents}
-        </Item>
+          {/* {done.contents} */}
 
         <p className="btnbox">
-          <StyledButton onClick={() => onDone(id)}>완료</StyledButton>
-          <StyledButton onClick={() => onRemove(id)}>삭제</StyledButton>
-          <StyledButton>수정</StyledButton>
+          <StyledButton onClick={() => onDoneRemove(id)}>삭제</StyledButton>
+          <StyledButton>취소</StyledButton>
         </p>
       </div>
     </Todoitems>
+    </>
   );
 };
 
-export default TodoItem;
+export default TodoDone;
