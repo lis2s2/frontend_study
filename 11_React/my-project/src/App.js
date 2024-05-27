@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useRef, useState } from 'react';
-import {reset } from 'styled-reset'
+import { reset } from 'styled-reset'
 import styled from "styled-components";
 import TodoBoard from './components/TodoBoard';
 import { createGlobalStyle } from 'styled-components'
@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'PyeongChangPeace-Bold';
     font-size: 1.3rem;
     background: #e9ecef;
-    width: 512px;
+    width: 700px;
     margin: 0 auto;
     margin-top: 3rem;
     /* border-radius: 2rem; */
@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
 
   .Outer {
   padding-top: 30px;
-  width: 800px;
+  width: 700px;
   margin: 0 auto 0 auto;
 }
 
@@ -59,6 +59,7 @@ const StyledInput = styled.input`
   line-height: 1.5;
   color: #000000;
   flex: 1;
+  display: flex;
   &::placeholder {
     color: #000000;
   }
@@ -102,7 +103,7 @@ function App() {
   const [inputValue, setInputValue] = useState('');
 
   // 완료 투두 
-  const [doneTodo, setDoneTodo] = useState([]);
+  // const [doneTodo, setDoneTodo] = useState([]);
 
   // 추가 기능
   const addTodo = (contents) => {
@@ -125,33 +126,35 @@ function App() {
   };
 
   // 할 일 완료 기능 
-  const handledone = (d) => {
-    const newDone = {
-      id: uuidv4(),
-      // contents,
-      done : true
-    };
+  const handledone = (id) => {
+    // const newDone = {
+    //   id: uuidv4(),
+    //   contents,
+    //   done : true
+    // };
 
-    setDoneTodo([...doneTodo, newDone]);
-    setTodo(todo.filter(t => t.id !== d.id));
-    // setTodo(todo.map(t => t.id !== id ? {...todo, done: !todo.done} : todo));
+    // setDoneTodo([...doneTodo, newDone]);
+    // setTodo(todo.filter(t => t.id !== d.id));
+    // setTodo(todo.map(t => t.id !== id ? {...t, done: !t.done} : t));
+    setTodo(todo.map(t => t.id === id ? {...t, done: !t.done} : t));
   };
 
   // 완료 삭제 기능
-  const handleDoneRemove = (id) => {
-    setDoneTodo(doneTodo.filter(d => d.id !== id));
-  };
+  // const handleDoneRemove = (id) => {
+  //   setDoneTodo(doneTodo.filter(d => d.id !== id));
+  //   setTodo(todo.filter(t => t.id !== id));
+  // };
 
   // 완료 취소 기능
-  const handleCancel = (t) => {
-    const newTodo = {
-      id: t.id,
-      contents: t.contents
-    };
+  // const handleCancel = (t) => {
+  //   const newTodo = {
+  //     id: t.id,
+  //     contents: t.contents
+  //   };
 
-    setTodo([...todo, newTodo]);
-    setDoneTodo([doneTodo.filter(d => t.id !== d.id)]);
-  };
+  //   setTodo([...todo, newTodo]);
+  //   setDoneTodo([doneTodo.filter(d => t.id !== d.id)]);
+  // };
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -183,7 +186,7 @@ function App() {
         </TodoInputWrapper>
 
         {/* 투두 */}
-        <TodoBoard todo={todo} onRemove={handleRemove} onDone={handledone} onDoneRemove={handleDoneRemove} />
+        <TodoBoard todo={todo} onRemove={handleRemove} onDone={handledone} />
 
       </main>
     );

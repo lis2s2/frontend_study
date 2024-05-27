@@ -5,7 +5,7 @@ const Todoitems = styled.div`
   height: 150px;
   /* min-width: 150px;
   max-width: 150px; */
-  border: 1px solid black;
+  border: 2px dashed black;
   border-radius: 1rem;
   font-family: 'NanumBarunGothic';
   font-size: 1rem;
@@ -58,10 +58,6 @@ const StyledButton = styled.button`
   }
 `;
 
-const Item = styled.div`
-  /* margin-left: 0.5rem; */
-  /* flex: 1; */
-`;
 
 // <Todoitem onChange={handleChange}>
   {/* {todo.map(item => <TodoItem item={item} />)} */}
@@ -72,15 +68,12 @@ function TodoItem(props) {
   return (
     <Todoitems>
       <div className="scroll">
-        <Item>
           {contents}
-        </Item>
-
-        <p className="btnbox">
-          <StyledButton onClick={() => onDone(id)}>완료</StyledButton>
-          <StyledButton onClick={() => onRemove(id)}>삭제</StyledButton>
-          <StyledButton>수정</StyledButton>
-        </p>
+          <p className="btnbox">
+            <StyledButton onClick={() => onDone(id)}>{done ? '취소' : '완료'}</StyledButton>
+            <StyledButton onClick={() => onRemove(id)}>삭제</StyledButton>
+            <StyledButton>수정</StyledButton>
+          </p>
       </div>
     </Todoitems>
   );

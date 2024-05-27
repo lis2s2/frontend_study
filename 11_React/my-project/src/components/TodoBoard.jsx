@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem";
 import TodoDone from "./TodoDone";
 
 const TodoBoardWrapper = styled.div`
-  width: 512px;
+  width: 700px;
   margin: 0 auto;
   /* margin-top: 6rem; */
   border-radius: 4px;
@@ -34,25 +34,25 @@ const TodoBoardWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   padding: 0 3rem;
-  flex-direction: row-reverse;
+  flex-direction: row;
   }
 `;
 
 function TodoBoard(props) {
   const { todo, onRemove, onDone, onDoneRemove } = props;
+  const list = todo.filter(d => !d.done);
+  const done = todo.filter(d => d.done);
 
   return (
     <TodoBoardWrapper>
       <h1 className="board-title">🌟List</h1>
       <div className="content">
-        {todo.map(item => <TodoItem key={item.id} item={item} onRemove={onRemove} onDone={onDone} />)
-          // contents={inputValue} 
-        }
+        {list.map(item => <TodoItem key={item.id} item={item} onDone={onDone} onRemove={onRemove} />)}
       </div>
 
       <h1 className="board-title">✔️Done</h1>
       <div className="content">
-        {/* {todo.map(done => <TodoDone key={done.id} done={done} onDone={onDone} onDoneRemove={onDoneRemove} />)} */}
+        {done.map(item => <TodoItem key={item.id} item={item} onDone={onDone} onRemove={onRemove}/>)}
       </div>
     
     </TodoBoardWrapper>
