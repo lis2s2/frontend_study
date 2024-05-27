@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     margin-top: 3rem;
     /* border-radius: 2rem; */
     overflow: hidden;
+    box-sizing: border-box;
   }
 
   .Outer {
@@ -102,10 +103,11 @@ function App() {
   // 입력 투두 
   const [inputValue, setInputValue] = useState('');
 
-  // 완료 투두 
-  // const [doneTodo, setDoneTodo] = useState([]);
+  // 수정 투두
+  const [editValue, setEditValue] = useState('');
+  const [edit, setEdit] = useState(null);
 
-  // 추가 기능
+  // 할 일 추가 기능
   const addTodo = (contents) => {
     const newTodo = {
       id: uuidv4(),
@@ -125,39 +127,16 @@ function App() {
     setTodo(todo.filter(t=> t.id !== id));
   };
 
-  // 할 일 완료 기능 
+  // 할 일 완료 
   const handledone = (id) => {
-    // const newDone = {
-    //   id: uuidv4(),
-    //   contents,
-    //   done : true
-    // };
-
-    // setDoneTodo([...doneTodo, newDone]);
-    // setTodo(todo.filter(t => t.id !== d.id));
-    // setTodo(todo.map(t => t.id !== id ? {...t, done: !t.done} : t));
     setTodo(todo.map(t => t.id === id ? {...t, done: !t.done} : t));
   };
 
-  // 완료 삭제 기능
-  // const handleDoneRemove = (id) => {
-  //   setDoneTodo(doneTodo.filter(d => d.id !== id));
-  //   setTodo(todo.filter(t => t.id !== id));
-  // };
-
-  // 완료 취소 기능
-  // const handleCancel = (t) => {
-  //   const newTodo = {
-  //     id: t.id,
-  //     contents: t.contents
-  //   };
-
-  //   setTodo([...todo, newTodo]);
-  //   setDoneTodo([doneTodo.filter(d => t.id !== d.id)]);
-  // };
-
   const handleChange = (e) => {
-    setInputValue(e.target.value);
+    const value = e.target.value;
+    if (value.length <= 50) {
+      setInputValue(value);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -170,6 +149,13 @@ function App() {
     // const handleInsert = (text) => {
     //   setTodoList(todos.concat(addItem));
     //   nextId.current += 1;
+    };
+
+    // 할 일 수정
+    const handleEdit = (id) => {
+      setTodo(todo.map(t => t.id === id ? {...t, contents: editValue} : t));
+      setEdit(null);
+      setEditValue('');
     };
 
     return (
@@ -186,7 +172,7 @@ function App() {
         </TodoInputWrapper>
 
         {/* 투두 */}
-        <TodoBoard todo={todo} onRemove={handleRemove} onDone={handledone} />
+        <TodoBoard todo={todo} onRemove={handleRemove} onDone={handledone} onEdit={(id, contents) => {setEdit(id); setEditValue(contents);}} onEditChange={handleEdit} />
 
       </main>
     );

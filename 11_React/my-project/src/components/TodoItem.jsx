@@ -1,38 +1,32 @@
 import styled, { css } from "styled-components";
 
 const Todoitems = styled.div`
-  width: 200px;
+  /* width: 200px; */
   height: 150px;
-  /* min-width: 150px;
-  max-width: 150px; */
+  min-width: 200px;
+  max-width: 200px;
   border: 2px dashed black;
   border-radius: 1rem;
   font-family: 'NanumBarunGothic';
   font-size: 1rem;
   align-self: center;
   justify-content: center;
+  text-align: center;
+  line-height: 1.5rem;
   margin: 10px;
   display: flex;
   box-sizing: border-box;
-  
-  /* .scroll { */
-    /* display: block; */
-    /* margin-right: 10px; */
-    /* width: 150px;
-    height: 150px; */
-    text-align: center;
-    line-height: 1.5rem;
-    /* display: flex; */
-    flex-wrap: wrap;
-  /* } */
+  word-wrap: break-word;
+  flex: 1;
+  overflow: hidden;
+  overflow-y:  auto;
+  white-space: wrap; 
+  word-wrap: break-word;
   
   .btnbox {
-    /* display: flex; */
-    /* border-style: none; */
-    /* border-radius: 3rem; */
-    /* width: 60px; */
     height: 30px;
-    margin: 0 20px;
+    margin: 0 2rem;
+    margin-top: 1rem;
   }
 `;
 
@@ -59,21 +53,23 @@ const StyledButton = styled.button`
 `;
 
 
+
 // <Todoitem onChange={handleChange}>
   {/* {todo.map(item => <TodoItem item={item} />)} */}
 {/* </Todoitem> */}
 function TodoItem(props) {
-  const { item: { id, contents, done }, onRemove, onDone } = props;
-  
+  const { item: { id, contents, done }, onRemove, onDone, onEdit, onEditChange, editValue, edit } = props;
+
   return (
     <Todoitems>
-      <div className="scroll">
-          {contents}
-          <p className="btnbox">
-            <StyledButton onClick={() => onDone(id)}>{done ? '취소' : '완료'}</StyledButton>
-            <StyledButton onClick={() => onRemove(id)}>삭제</StyledButton>
-            <StyledButton>수정</StyledButton>
-          </p>
+      <div>
+        <p>{contents}</p>
+          
+        <p className="btnbox">
+          <StyledButton onClick={() => onDone(id)}>{done ? '취소' : '완료'}</StyledButton>
+          <StyledButton onClick={() => onRemove(id)}>삭제</StyledButton>
+          <StyledButton onClick={() => onEdit(id, contents)}>수정</StyledButton>
+        </p>
       </div>
     </Todoitems>
   );

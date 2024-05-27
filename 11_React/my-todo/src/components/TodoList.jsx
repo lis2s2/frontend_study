@@ -24,5 +24,5 @@ function TodoList({todos, onRemove, onToggle, onModal}) {
     </TodoListWrapper>
   );
 };
- 
+
 export default TodoList;
