@@ -12,7 +12,6 @@ const TodoBoardWrapper = styled.div`
   box-sizing: border-box;
 
   .board-title {
-  /* font-family: 'PyeongChangPeace-Bold'; */
   color: #000000;
   height: 1.5rem;
   font-size: 1.4rem;
@@ -21,17 +20,15 @@ const TodoBoardWrapper = styled.div`
 }
 
 .content {
-  /* background: lightgray; */
   overflow-y: auto;
   margin: 0 auto;
   display: flex;
-  padding: 0 1rem;
   flex-direction: row;
   }
 `;
 
 function TodoBoard(props) {
-  const { todo, onRemove, onDone, onEdit, onEditChange } = props;
+  const { todo, onRemove, onDone, edit, editValue, onEdit, onEditChange, onEditSave } = props;
   const list = todo.filter(d => !d.done);
   const done = todo.filter(d => d.done);
 
@@ -39,12 +36,32 @@ function TodoBoard(props) {
     <TodoBoardWrapper>
       <h1 className="board-title">🌟List</h1>
       <div className="content">
-        {list.map(item => <TodoItem key={item.id} item={item} onDone={onDone} onRemove={onRemove} onEdit={onEdit} onEditChange={onEditChange} />)}
+        {list.map(item => <TodoItem 
+                            key={item.id} 
+                            item={item} 
+                            onDone={onDone} 
+                            onRemove={onRemove} 
+                            edit={edit}
+                            editValue={editValue}
+                            onEdit={onEdit}
+                            onEditChange={onEditChange}
+                            onEditSave={onEditSave} 
+                          />)}
       </div>
 
       <h1 className="board-title">✔️Done</h1>
       <div className="content">
-        {done.map(item => <TodoItem key={item.id} item={item} onDone={onDone} onRemove={onRemove}/>)}
+        {done.map(item => <TodoItem 
+                            key={item.id} 
+                            item={item} 
+                            onDone={onDone} 
+                            onRemove={onRemove}
+                            edit={edit}
+                            editValue={editValue}
+                            onEdit={onEdit}
+                            onEditChange={onEditChange}
+                            onEditSave={onEditSave} 
+                          />)}
       </div>
     
     </TodoBoardWrapper>
