@@ -3,10 +3,9 @@ import TodoItem from "./TodoItem";
 
 const TodoBoardWrapper = styled.div`
   width: 700px;
+  height: 540px;
   margin: 0 auto;
-  /* margin-top: 6rem; */
   border-radius: 4px;
-  /* overflow: hidden; */
   background: white;
   border-radius: 2rem;
   box-sizing: border-box;
@@ -21,11 +20,12 @@ const TodoBoardWrapper = styled.div`
 
 .content {
   overflow-y: auto;
-  margin: 0 auto;
+  margin: 0 1rem;
   display: flex;
   flex-direction: row;
   }
 `;
+
 
 function TodoBoard(props) {
   const { todo, onRemove, onDone, edit, editValue, onEdit, onEditChange, onEditSave } = props;

@@ -24,6 +24,7 @@ const Todoitems = styled.div`
   white-space: wrap; 
   padding: 0 1rem;
   
+
   .btnbox {
     height: 30px;
     text-align: center;
@@ -32,8 +33,15 @@ const Todoitems = styled.div`
   .timestamp {
     font-size: 0.8rem;
     color: gray;
-    margin-bottom: 10px;
+    margin-top: 10px;
   }
+`;
+
+const TodoButtonitems = styled.div`
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  text-align: center;
 `;
 
 const StyledButton = styled.button`
@@ -41,24 +49,18 @@ const StyledButton = styled.button`
   /* background: skyblue; */
   background: white;
   color: black;
-  width: 30px;
+  width: 35px;
   height: 30px;
   border: none;
-  /* padding: auto 0; */
   font-size: 1rem;
   font-weight: 700;
   text-align: center;
-  margin: auto 0.5rem;
+  line-height: 15px;
   cursor: pointer;
   transition: 0.2s background ease-in;
   border-radius: 2rem;
-  
-  &:hover {
-    background: lightblue;
-  }
+
 `;
-
-
 
 const StyledEditInput = styled.input`
   font-family: 'KyoboHandwriting2023wsa';
@@ -87,16 +89,17 @@ function TodoItem(props) {
           </>
         ) : (
           <div>
-            <p className="timestamp">{timestamp}</p>
             <p>{contents}</p>
+            <p className="timestamp">{timestamp}</p>
           </div>
         )}
       </Todoitems>
-      <p className="btnbox">
-        <StyledButton onClick={() => onEdit(id)}>✂</StyledButton>
+
+      <TodoButtonitems>
+        <StyledButton onClick={() => onEdit(id, contents)}>✂</StyledButton>
         <StyledButton onClick={() => onDone(id)}>{done ? '🥕' : '✌🏻'}</StyledButton>
         <StyledButton onClick={() => onRemove(id)}>💩</StyledButton>
-      </p>
+      </TodoButtonitems>
     </div>
   );
 };

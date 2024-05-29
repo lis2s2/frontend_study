@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { reset } from 'styled-reset'
 import styled from "styled-components";
 import TodoBoard from './components/TodoBoard';
 import { createGlobalStyle } from 'styled-components'
 import { v4 as uuidv4 } from "uuid";
+import SearchInput from './components/SearchInput';
+import Modal from './components/Modal';
 
 const GlobalStyle = createGlobalStyle`
   // 스타일 리셋
@@ -16,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.3rem;
     background: #e9ecef;
     width: 700px;
-    margin: 3rem auto;
+    margin: 4.5rem auto;
     overflow: hidden;
     box-sizing: border-box;
   }
@@ -41,7 +43,6 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-
 const TodoInputWrapper = styled.form`
   display: flex;
   background: lightyellow;
@@ -54,7 +55,8 @@ const StyledInput = styled.input`
   background: none;
   outline: none;
   border: none;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem;
+  margin-left: 1.5rem;
   font-size: 1.2rem;
   line-height: 1.5;
   color: #000000;
@@ -87,50 +89,57 @@ const StyledButton = styled.button`
 
 
 function App() {
+  
   // 기본 투두
   const [todo, setTodo] = useState([
     {
       id: uuidv4(),
       contents: '리액트기초를 공부해봅시다.',
       done : false,
-      timestamp: new Date().toLocaleTimeString()
+      timestamp: new Date().toLocaleDateString()
     },
     {
       id: uuidv4() + 1,
       contents: '리액트기초를 공부해봅시다222.',
       done : false,
-      timestamp: new Date().toLocaleTimeString()
+      timestamp: new Date().toLocaleDateString()
     }
   ]);
-
+  
   // 입력 투두 
   const [inputValue, setInputValue] = useState('');
-
+  
   // 수정 투두
   const [editValue, setEditValue] = useState('');
   const [edit, setEdit] = useState(null);
-
+  
+  // 시계 투두
+  const [time, setTime]= useState(new Date());
+  
+  // 검색
+  const [search, setSetsearch] = useState('');
+  
   // 할 일 추가 기능
   const addTodo = (contents) => {
     const newTodo = {
       id: uuidv4(),
       contents,
       done : false,
-      timestamp: new Date().toLocaleTimeString()
+      timestamp: new Date().toLocaleDateString()
     };
-
+    
     if (!inputValue) {
       alert('내용을 입력하세요!');
       return;
     }
     else setTodo([...todo, newTodo]);
   }
-
+  
   // 할 일 삭제
   const handleRemove = (id) => {
     setTodo(todo.filter(t=> t.id !== id));
   };
-
+  
   // 할 일 완료 
   const handledone = (id) => {
     setTodo(todo.map(t => t.id === id ? {...t, done: !t.done} : t));
@@ -158,22 +167,42 @@ function App() {
     e.preventDefault();
     // addTodo 함수에 값이 inputValue 
     addTodo(inputValue);
-
+    
     // 다시 빈값으로 만들어줌
     setInputValue('');
-
-    // 입력 시간
+  };
+  
+  // 시계
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => {
+      clearInterval(id)
     };
+  }, []);
+  
+  // 검색
+  const searchItems = (e) => {
+    setSetsearch(e.target.value);
+  };
+  
+  // 로컬 스토리지
+  useEffect(() => {
+    const dbTodo = JSON.parse(localStorage.getItem('todo')) || [];
+    setTodo(dbTodo);
+  }, []);
 
-    return (
-      <main>
+  useEffect(() => {
+    localStorage.setItem('todo', JSON.stringify(todo));
+  }, [todo]);
+
+  return (
+    <main>
         <GlobalStyle />
         {/* 현재 시간 */}
         <div className='clock'>
-          {new Date().toLocaleTimeString()} 
-          {/* // setInterval(() => {
-            
-          }, interval); 쓰기 */}
+          {time.toLocaleTimeString()}
         </div>
 
         {/* 타이틀 */}
@@ -196,12 +225,12 @@ function App() {
           onEdit={(id, contents) => {setEdit(id); setEditValue(contents);}} 
           onEditChange={handleEditChange} 
           onEditSave={handleEditSave}
+          onSearch={searchItems}
         />
 
+        <Modal />
       </main>
     );
   }
 
 export default App;
-
-// 1. 
