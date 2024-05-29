@@ -6,7 +6,6 @@ import styled from "styled-components";
 import TodoBoard from './components/TodoBoard';
 import { createGlobalStyle } from 'styled-components'
 import { v4 as uuidv4 } from "uuid";
-import SearchInput from './components/SearchInput';
 import Modal from './components/Modal';
 
 const GlobalStyle = createGlobalStyle`
