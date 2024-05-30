@@ -89,7 +89,7 @@ const StyledButton = styled.button`
 
 function App() {
   
-  // 기본 투두
+  /* 기본 투두 */
   const [todo, setTodo] = useState([
     {
       id: uuidv4(),
