@@ -48,7 +48,7 @@ function NewsItem(props) {
           </div>
         )}
 
-        <div className="content">
+        <div className="contents">
           <h2>
             <a href={url} target="_blank">{title}</a>
           </h2>
