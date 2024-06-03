@@ -39,13 +39,6 @@ function SignUp() {
   //   setGender(e.target.value);
   // };
 
-<<<<<<< HEAD
-  const handleChangeGender = (e) => {
-    setInputs(e.target.value);
-    console.log(e.target.value);
-
-    const { name, value } = e.target;
-=======
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     console.log(name, value);
@@ -56,25 +49,15 @@ function SignUp() {
     // };
     // copyObj[name] = value;
     // setInputs(copyObj);
->>>>>>> da0cde1e96de56ec93743b887200199b6d8764c2
 
     // 방법2
     setInputs({
-<<<<<<< HEAD
-      ...inputs,
-      [name]: value
-=======
       ...inputs, // 기존의 inputs 객체를 복사한 뒤
       [name]: value // name 값을 키로 갖는 속성을 동적으로 정의
->>>>>>> da0cde1e96de56ec93743b887200199b6d8764c2
     });
   };
 
   const handleSubmit = (e) => {
-<<<<<<< HEAD
-    alert(`이름은 ${name}, 성별은 ${gender}`);
-=======
->>>>>>> da0cde1e96de56ec93743b887200199b6d8764c2
     e.preventDefault();
     alert(`이름: ${name}, 성별: ${gender}`);
   };
@@ -82,37 +65,19 @@ function SignUp() {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-<<<<<<< HEAD
-        이름 입력: 
-        <input 
-          type="text" 
-          name="name"
-          value={name}
-          onChange={handleChangeGender}
-        />
-=======
         이름:
         {/* <input type="text" value={name} onChange={handleChangeName} /> */}
         <input type="text" name="name" value={name} onChange={handleInputChange} />
->>>>>>> da0cde1e96de56ec93743b887200199b6d8764c2
       </label>
 
       <br />
 
-<<<<<<< HEAD
-      <label> 
-        성별 선택:
-        <select  value={gender} name="gender" onChange={handleChangeGender}>
-          <option value="man">남자</option>
-          <option value="woman">여자</option>
-=======
       <label>
         성별:
         {/* <select value={gender} onChange={handleChangeGender}> */}
         <select name="gender" value={gender} onChange={handleInputChange}>
           <option value="남자">남자</option>
           <option value="여자">여자</option>
->>>>>>> da0cde1e96de56ec93743b887200199b6d8764c2
         </select>
       </label>
 
