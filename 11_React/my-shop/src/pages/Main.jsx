@@ -18,7 +18,7 @@ const MainBackground = styled.div`
 function Main() {
   const dispatch = useDispatch();
 
-  const product = useSelector(selectProduct);
+  const product = useSelector();
 
   // 처음 마운트 됐을 때 서버에 상품 목록 데이터를 요청하고
   // 그 결과를 리덕스 스토어에 전역 상태로 저장
