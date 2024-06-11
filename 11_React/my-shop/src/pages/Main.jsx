@@ -1,24 +1,31 @@
 // 리액트(JS)에서 이미지 파일 가져오기
 // 1) src 폴더 안 이미지(상대 경로로 import해서 사용)
-import styled from "styled-components";
 import yonexImg from "../images/yonex.jpg";
+// 2) public 폴더 안 이미지(root 결로로 바로 접근)
+// 빌드 시 src 폴더에 있는 코드와 파일은 압축이 되지만 public 폴더에 있는 것들은 그대로 보존
+// 이미지 같은 수정이 필요 없는 static 파일의 경우 public에 보관하기도 함
+
+import styled from "styled-components";
 import { Col, Container, Row } from "react-bootstrap";
 import { useEffect } from "react";
 import axios from "axios";
-import { getAllProducts } from "../features/product/productSlice";
+import { getAllProducts, selectProductList } from "../features/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
+import ProductListItem from "../components/ProductListItem";
 
 const MainBackground = styled.div`
   height: 500px;
-  background-image: url(${yonexImg});
+  /* background-image: url(${yonexImg}); */
+  background-image: url("/images/yonex.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 `;
 
 function Main() {
+  
   const dispatch = useDispatch();
 
-  const product = useSelector();
+  const productList = useSelector(selectProductList);
 
   // 처음 마운트 됐을 때 서버에 상품 목록 데이터를 요청하고
   // 그 결과를 리덕스 스토어에 전역 상태로 저장
@@ -47,7 +54,7 @@ function Main() {
           <Row>
             {/* 부트스트랩 이용한 반응형 작업 */}
             {/* md >= 768px 이상에서 전체 12등분 중 4:4:4로 보여줌 */}
-            <Col md={4} sm={6}>
+            {/* <Col md={4} sm={6}>
             <img src="https://www.yonexmall.com/shop/data/goods/1645767865278s0.png" width="80%" />
               <h4>상품명</h4>
               <p>상품가격</p>
@@ -61,7 +68,16 @@ function Main() {
               <img src="https://www.yonexmall.com/shop/data/goods/1667190100104s0.png" width="80%" />
               <h4>상품명</h4>
               <p>상품가격</p>
-            </Col>
+            </Col> */}
+
+            {/* ProductListItem 컴포넌트를 만들어서 반복 렌더링으로 바꾸고 데이터 바인딩 */}
+            {/* Quiz: 
+              1) 반복적인 상품 아이템을 src/components/ProductListItem 컴포넌트로 만들기
+              2) productList 배열을 반복하며 ProductListItem 컴포넌트를 렌더링 하기
+              3) 상품 정보를 props로 넘겨서 데이터 바인딩 하기
+            */}
+            {productList.map((product) => <ProductListItem key={product.id} product={product} />)}
+            
           </Row>
         </Container>
       </section>
@@ -95,7 +111,7 @@ export default Main;
 // My JSON Server 사용법
 // GitHub에 저장소 생성(<your-username>/<your-repo>)
 // db.json파일 만들기
-// 서버에 액세스하려면 https://my-json-server.typicode.com/<your-username>/<your-repo>를 방문 (내거 아이디랑 주소 넣으셈)
+// 서버에 액세스하려면 https://my-json-server.typicode.com/<your-username>/<your-repo>를 방문 (내 아이디랑 주소 넣으셈)
 
 // 사용 예
 // https://my-json-server.typicode.com/geoblo/db-shop

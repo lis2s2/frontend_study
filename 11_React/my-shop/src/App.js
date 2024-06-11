@@ -3,6 +3,7 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import Layout from "./pages/Layout";
 import { Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
+import ProductDetail from "./pages/ProductDetail";
 
 
 // 글로벌(공통) 스타일 설정
@@ -10,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     box-sizing: border-box;
-  }
+    }
 
   * {
     box-sizing: inherit;
@@ -22,6 +23,10 @@ const GlobalStyle = createGlobalStyle`
 
   .cursor-pointer {
     cursor: pointer;
+  }
+
+  .fontt {
+    font-family: 'Cafe24Meongi-W-v1.0';
   }
 `;
 
@@ -47,13 +52,16 @@ function App() {
           </Container>
         </Navbar>
       </header> */}
-      {/* 퀴즈: Layout 컴포넌트로 추출 및 Nested Route 구성해보기 */}
-      {/* <Layout /> */}
 
+      {/* 퀴즈: Layout 컴포넌트로 추출 및 Nested Route 구성해보기 */}
       <Routes>
           <Route path="/" element={<Layout />}>
             {/* index: index route(여기서는 기본 자식 라우트를 의미) */}
             <Route index element={<Main />} />
+            {/* 퀴즈: 상품별 상세페이지 여러 개를 라우팅하려면? URL 파라미터 사용
+              예: /detail/1로 접속하면 productId에 1이 담기도록 설정 */}
+            {/* <Route path="detail" element={<ProductDetail />} /> */}
+            <Route path="detail/:productlId" element={<ProductDetail />} />
           </Route>
         </Routes>
 
