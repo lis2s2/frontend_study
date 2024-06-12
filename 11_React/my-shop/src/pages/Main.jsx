@@ -1,10 +1,3 @@
-// 리액트(JS)에서 이미지 파일 가져오기
-// 1) src 폴더 안 이미지(상대 경로로 import해서 사용)
-import yonexImg from "../images/yonex.jpg";
-// 2) public 폴더 안 이미지(root 결로로 바로 접근)
-// 빌드 시 src 폴더에 있는 코드와 파일은 압축이 되지만 public 폴더에 있는 것들은 그대로 보존
-// 이미지 같은 수정이 필요 없는 static 파일의 경우 public에 보관하기도 함
-
 import styled from "styled-components";
 import { Col, Container, Row } from "react-bootstrap";
 import { useEffect } from "react";
@@ -13,12 +6,22 @@ import { getAllProducts, selectProductList } from "../features/product/productSl
 import { useDispatch, useSelector } from "react-redux";
 import ProductListItem from "../components/ProductListItem";
 
+// 리액트(JS)에서 이미지 파일 가져오기
+// 1) src 폴더 안 이미지(상대 경로로 import해서 사용)
+import yonexImg from "../images/yonex.jpg";
+import candy from "../images/candy.jpg";
+import jelly from "../images/jelly.jpg";
+// 2) public 폴더 안 이미지(root 결로로 바로 접근)
+// 빌드 시 src 폴더에 있는 코드와 파일은 압축이 되지만 public 폴더에 있는 것들은 그대로 보존
+// 이미지 같은 수정이 필요 없는 static 파일의 경우 public에 보관하기도 함
+
 const MainBackground = styled.div`
   height: 500px;
-  /* background-image: url(${yonexImg}); */
-  background-image: url("/images/yonex.jpg");
+  background-image: url(${jelly});
+  /* background-image: url("/images/yonex.jpg"); */
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover;  
+  background-position: center;
 `;
 
 function Main() {

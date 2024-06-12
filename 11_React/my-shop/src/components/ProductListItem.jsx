@@ -25,11 +25,11 @@ function ProductListItem(props) {
         <h4>{product.title}</h4>
         <p>{product.price}</p>
       </Col> */}
-      <Col md={4} sm={6} className="cursor-pointer">
+      <StyledCol md={4} sm={6} className="cursor-pointer">
         <img src={imagePath} width="80%" onClick={() => navigate(`/detail/${id}`)} />
         <h4>{title}</h4>
         <p>{formatter.format(price)}원</p>
-      </Col>
+      </StyledCol>
     </>
   );
 };

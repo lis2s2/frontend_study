@@ -10,6 +10,9 @@ import { store } from './app/store';
 // 부트스트랩 CSS 추가
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// React-Toastify CSS 추가
+import 'react-toastify/dist/ReactToastify.css';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
