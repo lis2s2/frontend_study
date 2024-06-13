@@ -21,6 +21,7 @@ const StyledAlert = styled(Alert)`
 `;
 
 function ProductDetail() {
+  
   const dispatch = useDispatch();
   
   const product = useSelector(selectProduct);

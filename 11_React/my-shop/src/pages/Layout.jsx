@@ -7,6 +7,7 @@ const StyledNavbar = styled(Navbar)`
 `;
 
 
+
 function Layout() {
   const navigate = useNavigate();
 
@@ -14,15 +15,15 @@ function Layout() {
     <>
       {/* 헤더 */}
       <header>
-        <Navbar bg="dark" data-bs-theme="dark">
+        <StyledNavbar bg="dark" data-bs-theme="dark">
           <Container>
-            <StyledNavbar.Brand href="#" onClick={() => navigate('/')}>수상한 사탕 가게</StyledNavbar.Brand>
+            <Navbar.Brand href="#" onClick={() => navigate('/')}>수상한 사탕 가게</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link onClick={() => navigate('/')}>홈</Nav.Link>
               <Nav.Link onClick={() => navigate('/cart')}>장바구니</Nav.Link>
             </Nav>
           </Container>
-        </Navbar>
+        </StyledNavbar>
       </header>
 
       {/* 자식 컴포넌트가 렌더링 될 위치 */}

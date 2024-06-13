@@ -12,11 +12,11 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     box-sizing: border-box;
+    font-family: 'Cafe24Meongi-W-v1.0';
     }
 
   * {
     box-sizing: inherit;
-    font-family: 'Cafe24Meongi-W-v1.0';
   }
 
   #root {
