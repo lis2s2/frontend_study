@@ -64,7 +64,7 @@ const productSlice = createSlice({
 
 // 선택자 함수
 export const selectProductList = state => state.product.productList;
-export const selectProduct = state => state.product.selectedProduct;
+export const selectSelectedProduct = state => state.product.selectedProduct;
 export const selectStatus = state => state.product.status;
 
 // 액션 생성 함수

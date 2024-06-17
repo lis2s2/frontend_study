@@ -6,8 +6,6 @@ const StyledNavbar = styled(Navbar)`
   font-family: 'Cafe24Meongi-W-v1.0';
 `;
 
-
-
 function Layout() {
   const navigate = useNavigate();
 
