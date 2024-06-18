@@ -31,11 +31,9 @@ function ProductDetail() {
   const [orderCount, setOrderCount] = useState(1); // 주문수량 상태
   const [currentTabIndex, setCurrentTabIndex] = useState(0); // 현재 탭 상태
   const [currentTab, setCurrentTab] = useState('detail'); // 현재 탭 상태
-  const [showModal, setShowModal] = useState(false);
-
+  const [showModal, setShowModal] = useState(false); // 모달 상태
   const handleCloseModal = () => setShowModal(false);
   const handleOpenModal = () => setShowModal(true);
-
   const navigate = useNavigate();
 
 
@@ -72,10 +70,29 @@ function ProductDetail() {
     };
   }, []);
 
+  // 상품 상세페이지에 들어갔을 때 해당 상품이 존재할 때만 id값을 localStorage에 추가
+  useEffect(() => {
+    console.log(product);
+
+    if (!product) return;
+
+    // 처음엔 null이니까 기본값으로 빈배열 넣어줌
+    let recentProducts = JSON.parse(localStorage.getItem('recentProducts')) || [];
+
+    // id값을 넣기 전에 기존 배열에 존재하는지 검사하거나 
+    // 아니면 일단 배열에 넣고 Set 자료형을 이용하여 중복 제거
+    recentProducts.push(productId);
+    recentProducts = new Set(recentProducts); // 배열을 Set 객체로 만듦(중복 요소가 알아서 제거됨)
+    recentProducts = [...recentProducts]; // Set객체를 다시 배열로 반환
+
+    localStorage.setItem('recentProducts', JSON.stringify(recentProducts)); // JSON 문자열로 저장
+  }, [product]);
+
   const handleChangeOrderCount = (e) => {
     // 숫자 외 입력 시 유효성 검사 후 경고 토스트 띄우기
+    // https://fkhadra.github.io/react-toastify/introduction/
     if (isNaN(e.target.value)) {
-      toast('👿 숫자만 입력하세요!');
+      toast('👿 숫자만 입력하세요!', {theme: "light"});
       return;
     }
 
