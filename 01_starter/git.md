@@ -110,7 +110,7 @@ git branch -D feature/login
 - 그래야 충돌을 최소화 할 수 있음(습관화하기), 했는지 안했는지 기억이 안나면 무조건하기! git pull origin main
 2. 기능 브랜치 만들기 (git branch) git branch feature/login
 3. 브랜치 이동 (git checkout) git checkout feature/login
-4. 작업 하기 -> 커밋 만들기 -> 푸쉬하기
+4. 작업 하기 -> 커밋 만들기 -> 푸쉬하기 git push origin feature/login
 5. main에 다른 사람이 먼저 작업 올림
 6. 깃헙에서 pull request 만들기
 7. (충돌 해결 가이드에 따라) 로컬에서 충돌 해결하고 다시 push하기
