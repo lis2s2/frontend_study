@@ -6,6 +6,7 @@ import { getAllProducts, selectProductList, addMoreProducts, getMoreProductsAsyn
 import { useDispatch, useSelector } from "react-redux";
 import ProductListItem from "../components/ProductListItem";
 import { SyncLoader } from "react-spinners";
+import toast from "react-toastify";
 
 // 리액트(JS)에서 이미지 파일 가져오기
 // 1) src 폴더 안 이미지(상대 경로로 import해서 사용)
@@ -14,6 +15,7 @@ import candy from "../images/candy.jpg";
 import jelly from "../images/jelly.jpg";
 import { getMoreProducts } from "../api/productAPI";
 import RecentProducts from "../components/RecentProducts";
+import { useNavigate } from "react-router-dom";
 // 2) public 폴더 안 이미지(root 결로로 바로 접근)
 // 빌드 시 src 폴더에 있는 코드와 파일은 압축이 되지만 public 폴더에 있는 것들은 그대로 보존
 // 이미지 같은 수정이 필요 없는 static 파일의 경우 public에 보관하기도 함
@@ -28,7 +30,7 @@ const MainBackground = styled.div`
 `;
 
 function Main() {
-  
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const productList = useSelector(selectProductList);
@@ -128,6 +130,23 @@ function Main() {
         <Button variant="secondary" className="mb-4" onClick={handleGetMoreProductsAsync}>
           더보기 {status}
         </Button>
+
+        {/* (테스트용) 게시물 목록 조회 */}
+        <Button variant="secondary" className="mb-4" onClick={async () => {
+          try {
+            const token = localStorage.getItem('token');
+            const result = await axios.get(`http://ec2-13-209-77-178.ap-northeast-2.compute.amazonaws.com:8080/board/list`, {
+              headers: {
+                Authorization: token
+              }
+            });
+            console.log(result.data);   
+          } catch (error) {
+            console.log(error);
+            alert(error.response.data.message);
+            navigate('/login');
+          }
+        }}>게시물 조회</Button>
       </section>
 
       {/* 최근 본 상품 컴포넌트 */}
