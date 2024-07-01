@@ -23,7 +23,7 @@ const ModalContainer = styled.div`
   overflow-y: auto;
 
   // 모든 아이콘 태그
-  svg{
+  svg {
     cursor: pointer;
   }
 

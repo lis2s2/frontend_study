@@ -16,6 +16,7 @@ import jelly from "../images/jelly.jpg";
 import { getMoreProducts } from "../api/productAPI";
 import RecentProducts from "../components/RecentProducts";
 import { useNavigate } from "react-router-dom";
+import { loginSuccess } from "../features/user/userSlice";
 // 2) public 폴더 안 이미지(root 결로로 바로 접근)
 // 빌드 시 src 폴더에 있는 코드와 파일은 압축이 되지만 public 폴더에 있는 것들은 그대로 보존
 // 이미지 같은 수정이 필요 없는 static 파일의 경우 public에 보관하기도 함
@@ -135,16 +136,23 @@ function Main() {
         <Button variant="secondary" className="mb-4" onClick={async () => {
           try {
             const token = localStorage.getItem('token');
-            const result = await axios.get(`http://ec2-13-209-77-178.ap-northeast-2.compute.amazonaws.com:8080/board/list`, {
+            const result = await axios.get(`${process.env.REACT_APP_API_URL}/board/list`, {
               headers: {
                 Authorization: token
+                // Authorization: '1'
               }
             });
             console.log(result.data);   
           } catch (error) {
             console.log(error);
-            alert(error.response.data.message);
-            navigate('/login');
+            alert(error.response.data.message, {
+              position: 'top-center'
+            });
+
+            if (error.response.data.code === '403') {
+              dispatch(loginSuccess());
+              navigate('/login');
+            }
           }
         }}>게시물 조회</Button>
       </section>
